@@ -64,20 +64,30 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 25px;
       margin-top: 20px;
     }
 
-    .gallery img {
-      max-width: 100%;
+    .gallery-item {
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .gallery-item img {
+      width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      width: 300px;
+    }
+
+    .gallery-item h3 {
+      font-size: 18px;
+      color: #0047ab;
+      margin: 10px 0 5px;
     }
 
     @media (max-width: 600px) {
-      .gallery img {
+      .gallery-item {
         width: 90%;
       }
     }
@@ -102,9 +112,20 @@
     </p>
 
     <div class="gallery">
-      <img src="amalfitani.jpg" alt="Estadio José Amalfitani" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+      <div class="gallery-item">
+        <h3>Estadio José Amalfitani</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Estadio_Jos%C3%A9_Amalfitani.jpg/640px-Estadio_Jos%C3%A9_Amalfitani.jpg" alt="Estadio José Amalfitani" />
+      </div>
+
+      <div class="gallery-item">
+        <h3>Campeón Libertadores 1994</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
+      </div>
+
+      <div class="gallery-item">
+        <h3>Bandera de Vélez</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+      </div>
     </div>
   </main>
 </body>
