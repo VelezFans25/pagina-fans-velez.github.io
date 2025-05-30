@@ -96,7 +96,7 @@
     .trophies-container {
       background-color: #0047ab;
       color: white;
-      padding: 30px;
+      padding: 30px 20px 60px 20px;
       max-width: 800px;
       margin: 40px auto 60px auto;
       border-radius: 8px;
@@ -104,41 +104,56 @@
       text-align: center;
     }
 
-    .trophies-section {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .trophies-section h2 {
-      margin-bottom: 20px;
+    .trophies-title {
       font-weight: bold;
+      font-size: 28px;
+      margin-bottom: 40px;
     }
 
     .trophies-row {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
       align-items: center;
-    }
-
-    hr.trophies-line {
-      border: none;
-      border-top: 2px solid white;
-      width: 80%;
-      margin: 0 auto 40px auto;
-      border-radius: 2px;
+      gap: 40px;
+      flex-wrap: nowrap;
+      /* para que no rompa línea */
     }
 
     svg.trophy {
-      width: 80px;
-      height: 100px;
+      width: 120px;
+      height: 160px;
       fill: #0047ab;
       stroke: white;
       stroke-width: 3;
       border-radius: 5px;
       flex-shrink: 0;
+    }
+
+    .trophy-base {
+      fill: #0047ab;
+      stroke: white;
+      stroke-width: 3;
+    }
+
+    .x11-text {
+      font-size: 70px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      color: white;
+      user-select: none;
+      flex-shrink: 0;
+      /* para que no se achique */
+    }
+
+    @media (max-width: 600px) {
+      .trophies-row {
+        flex-wrap: wrap;
+      }
+
+      .x11-text {
+        font-size: 50px;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
@@ -186,59 +201,37 @@
     <!-- CUADRO TROFEOS -->
     <div class="trophies-container">
 
-      <div class="trophies-section">
-        <h2>Títulos Nacionales</h2>
-        <div class="trophies-row">
-          <!-- Trofeo nacional mejorado con orejas y relleno azul + x11 -->
-          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg" >
-            <path 
-              d="M20 12 
-                 Q18 8 24 8 
-                 L40 8 
-                 Q46 8 44 12 
-                 L52 20 
-                 Q54 24 50 27 
-                 L50 40 
-                 Q58 45 58 55 
-                 Q58 60 52 60 
-                 L48 70 
-                 L16 70 
-                 L12 60 
-                 Q6 60 6 55 
-                 Q6 45 14 40 
-                 L14 27 
-                 Q10 24 12 20 
-                 Z" 
-              fill="#0047ab" stroke="white" stroke-width="3"
-            />
-            <rect x="16" y="70" width="32" height="8" fill="#0047ab" stroke="white" stroke-width="3" />
-            <text x="32" y="45" fill="white" font-size="24" font-weight="bold" font-family="Arial" text-anchor="middle" dominant-baseline="middle">x11</text>
-          </svg>
+      <div class="trophies-title">Títulos Nacionales</div>
+      
+      <div class="trophies-row">
+        <!-- Trofeo único y grande -->
+        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg" >
+          <!-- Base ancha -->
+          <rect x="10" y="75" width="44" height="12" class="trophy-base" rx="3" ry="3" />
+          <!-- Cuerpo del trofeo -->
+          <path 
+            d="M20 15 
+               Q18 10 26 10 
+               L38 10 
+               Q46 10 44 15 
+               L54 28 
+               Q57 33 52 40 
+               L52 60 
+               Q60 65 60 75 
+               Q60 80 54 80 
+               L50 90 
+               L14 90 
+               L10 80 
+               Q4 80 4 75 
+               Q4 65 12 60 
+               L12 40 
+               Q7 33 10 28 
+               Z" 
+            fill="#0047ab" stroke="white" stroke-width="3"
+          />
+        </svg>
 
-          <!-- Trofeo 2 sin cambios -->
-          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="35" r="20" />
-            <rect x="20" y="55" width="24" height="10" />
-          </svg>
-        </div>
-      </div>
-
-      <hr class="trophies-line" />
-
-      <div class="trophies-section">
-        <h2>Títulos Internacionales</h2>
-        <div class="trophies-row">
-          <!-- Trofeo 1 -->
-          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="32" cy="35" rx="20" ry="25" />
-            <rect x="22" y="60" width="20" height="10" />
-          </svg>
-          <!-- Trofeo 2 -->
-          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 20 L44 20 L32 50 Z" />
-            <rect x="22" y="60" width="20" height="10" />
-          </svg>
-        </div>
+        <div class="x11-text">x11</div>
       </div>
 
     </div>
