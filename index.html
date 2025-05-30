@@ -92,7 +92,6 @@
       }
     }
 
-    /* Estilo para el cuadro de trofeos */
     .trophies-container {
       background-color: #0047ab;
       color: white;
@@ -116,7 +115,6 @@
       align-items: center;
       gap: 40px;
       flex-wrap: nowrap;
-      /* para que no rompa línea */
     }
 
     svg.trophy {
@@ -142,7 +140,6 @@
       color: white;
       user-select: none;
       flex-shrink: 0;
-      /* para que no se achique */
     }
 
     @media (max-width: 600px) {
@@ -198,17 +195,12 @@
       </div>
     </div>
 
-    <!-- CUADRO TROFEOS -->
+    <!-- CUADRO TROFEOS NACIONALES -->
     <div class="trophies-container">
-
       <div class="trophies-title">Títulos Nacionales</div>
-      
       <div class="trophies-row">
-        <!-- Trofeo único y grande -->
-        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg" >
-          <!-- Base ancha -->
+        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="75" width="44" height="12" class="trophy-base" rx="3" ry="3" />
-          <!-- Cuerpo del trofeo -->
           <path 
             d="M20 15 
                Q18 10 26 10 
@@ -230,12 +222,22 @@
             fill="#0047ab" stroke="white" stroke-width="3"
           />
         </svg>
-
         <div class="x11-text">x11</div>
       </div>
-
     </div>
-    <!-- FIN CUADRO TROFEOS -->
+
+    <!-- CUADRO TROFEOS INTERNACIONALES -->
+    <div class="trophies-container" style="background-color: #003b8b;">
+      <div class="trophies-title">Títulos Internacionales</div>
+      <div class="trophies-row">
+        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="20" r="10" fill="#0047ab" stroke="white" stroke-width="3" />
+          <rect x="26" y="30" width="12" height="30" fill="#0047ab" stroke="white" stroke-width="3" />
+          <rect x="20" y="60" width="24" height="12" fill="#0047ab" stroke="white" stroke-width="3" />
+        </svg>
+        <div class="x11-text">x5</div>
+      </div>
+    </div>
 
   </main>
 </body>
