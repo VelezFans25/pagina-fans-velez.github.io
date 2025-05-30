@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ídolos de Vélez Sarsfield</title>
   <style>
     * {
@@ -11,14 +11,28 @@
 
     body {
       margin: 0;
-      background-color: white;
       font-family: Arial, sans-serif;
+      background-color: #f0f4fc;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 71, 171, 0.05),
+        rgba(0, 71, 171, 0.05) 2px,
+        transparent 2px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 71, 171, 0.05),
+        rgba(0, 71, 171, 0.05) 2px,
+        transparent 2px,
+        transparent 20px
+      );
     }
 
     header {
       background-color: #0047ab;
       color: white;
-      padding: 10px 20px;
+      padding: 15px 20px;
       text-align: center;
       font-size: 28px;
       font-weight: bold;
@@ -45,53 +59,143 @@
     }
 
     main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      padding: 0 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     h2 {
       color: #0047ab;
-      margin-bottom: 25px;
+      text-align: center;
+      margin-top: 30px;
     }
 
-    .gallery {
+    /* Galería sin fotos, solo lista de nombres */
+    .idols-gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      margin-top: 20px;
+      padding: 20px 10px;
     }
 
-    .gallery-item {
-      text-align: center;
-      max-width: 300px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item h3 {
-      font-size: 18px;
+    .idol-card {
+      background: #fefefe;
+      border-radius: 8px;
+      padding: 15px 25px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-weight: bold;
       color: #0047ab;
-      margin: 10px 0 5px;
+      font-size: 18px;
+      transition: border-color 0.3s, background-color 0.3s;
+      text-align: center;
+      user-select: none;
+    }
+
+    .idol-card:hover {
+      border-color: #0047ab;
+      background-color: #e1e8f8;
+    }
+
+    /* Sección detalles ídolos */
+    section.idol-detail {
+      margin-top: 50px;
+      padding: 20px;
+      border-top: 2px solid #0047ab;
+    }
+
+    section.idol-detail h3 {
+      color: #003b8b;
+      margin-bottom: 10px;
+    }
+
+    section.idol-detail p {
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    /* Palmarés organizado */
+    .palmares {
+      background-color: #0047ab;
+      color: white;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 450px;
+      margin: 0 auto 15px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .palmares h4 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 22px;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .palmares ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .palmares ul li {
+      margin-bottom: 8px;
+      padding-left: 15px;
+      position: relative;
+    }
+
+    .palmares ul li::before {
+      content: "🏆";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Link extra info */
+    .more-info {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #002f7a;
+      text-decoration: none;
+    }
+
+    .more-info:hover {
+      text-decoration: underline;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     @media (max-width: 600px) {
-      .gallery-item {
+      .idols-gallery {
+        gap: 15px;
+      }
+
+      .idol-card {
         width: 90%;
+      }
+
+      .palmares {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    Vélez Sarsfield
+    Vélez Sarsfield - Ídolos
   </header>
 
   <nav>
@@ -103,47 +207,59 @@
   </nav>
 
   <main>
-    <h2>Ídolos de Vélez Sarsfield</h2>
-    <p>
-      Aquí están algunos de los jugadores más emblemáticos y queridos de la historia del Fortín.
-    </p>
+    <h2>Galería de Ídolos de Vélez Sarsfield</h2>
 
-    <div class="gallery">
-      <div class="gallery-item">
-        <h3>José Luis Chilavert</h3>
-        <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Jos%C3%A9_Luis_Chilavert_2008-03-26.jpg" alt="José Luis Chilavert" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Sergio Almirón</h3>
-        <a href="https://es.wikipedia.org/wiki/Sergio_Almir%C3%B3n_(futbolista)" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Sergio_Almiron_2010-02-07.jpg" alt="Sergio Almirón" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Marcelo Gómez</h3>
-        <a href="https://es.wikipedia.org/wiki/Marcelo_G%C3%B3mez" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Marcelo_G%C3%B3mez_en_el_Partido_Cl%C3%A1sico_entre_V%C3%A9lez_Sarsfield_y_Boca_Juniors_%282011%29.jpg" alt="Marcelo Gómez" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Patricio Camps</h3>
-        <a href="https://es.wikipedia.org/wiki/Patricio_Camps" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Patricio_Camps_2006-10-21.JPG" alt="Patricio Camps" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Omar Asad</h3>
-        <a href="https://es.wikipedia.org/wiki/Omar_Asad" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Omar_Asad_2015-09-25.jpg" alt="Omar Asad" />
-        </a>
-      </div>
+    <div class="idols-gallery">
+      <a href="#bianchi" class="idol-card">Carlos Bianchi</a>
+      <a href="#sanchez" class="idol-card">Walter Sánchez</a>
+      <a href="#rueda" class="idol-card">Óscar Rueda</a>
     </div>
+
+    <!-- Detalles ídolos -->
+    <section id="bianchi" class="idol-detail">
+      <h3>Carlos Bianchi</h3>
+      <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales, dejando una huella imborrable en el Fortín.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>11 títulos locales con Vélez</li>
+          <li>1 Copa Libertadores (1994)</li>
+          <li>1 Copa Intercontinental (1994)</li>
+          <li>3 Copas Sudamericanas</li>
+        </ul>
+      </div>
+      <a href="https://es.wikipedia.org/wiki/Carlos_Bianchi" target="_blank" class="more-info">Ver más sobre su carrera</a>
+    </section>
+
+    <section id="sanchez" class="idol-detail">
+      <h3>Walter Sánchez</h3>
+      <p>Walter Sánchez fue un jugador clave en la defensa de Vélez durante los años 80 y 90, destacándose por su entrega y liderazgo dentro del campo.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>5 títulos locales</li>
+          <li>1 Copa Libertadores (1994)</li>
+          <li>1 Copa Intercontinental (1994)</li>
+        </ul>
+      </div>
+      <a href="https://es.wikipedia.org/wiki/Walter_Sánchez" target="_blank" class="more-info">Ver más sobre su carrera</a>
+    </section>
+
+    <section id="rueda" class="idol-detail">
+      <h3>Óscar Rueda</h3>
+      <p>Óscar Rueda es recordado por su habilidad técnica y sus aportes en el mediocampo durante la época dorada de Vélez Sarsfield en los 90.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>7 títulos locales</li>
+          <li>1 Copa Libertadores (1994)</li>
+          <li>1 Copa Intercontinental (1994)</li>
+          <li>2 Copas Sudamericanas</li>
+        </ul>
+      </div>
+      <a href="https://es.wikipedia.org/wiki/%C3%93scar_Rueda" target="_blank" class="more-info">Ver más sobre su carrera</a>
+    </section>
+
   </main>
 </body>
 </html>
