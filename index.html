@@ -120,6 +120,7 @@
       gap: 40px;
       margin-bottom: 30px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     hr.trophies-line {
@@ -188,12 +189,33 @@
       <div class="trophies-section">
         <h2>Títulos Nacionales</h2>
         <div class="trophies-row">
-          <!-- Trofeo 1 -->
-          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-            <path d="M32 5 L52 20 L52 55 Q52 60 47 60 L17 60 Q12 60 12 55 L12 20 Z" />
-            <rect x="22" y="60" width="20" height="10" />
+          <!-- Trofeo nacional mejorado con orejas y relleno azul + x11 -->
+          <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg" >
+            <path 
+              d="M20 12 
+                 Q18 8 24 8 
+                 L40 8 
+                 Q46 8 44 12 
+                 L52 20 
+                 Q54 24 50 27 
+                 L50 40 
+                 Q58 45 58 55 
+                 Q58 60 52 60 
+                 L48 70 
+                 L16 70 
+                 L12 60 
+                 Q6 60 6 55 
+                 Q6 45 14 40 
+                 L14 27 
+                 Q10 24 12 20 
+                 Z" 
+              fill="#0047ab" stroke="white" stroke-width="3"
+            />
+            <rect x="16" y="70" width="32" height="8" fill="#0047ab" stroke="white" stroke-width="3" />
+            <text x="32" y="45" fill="white" font-size="24" font-weight="bold" font-family="Arial" text-anchor="middle" dominant-baseline="middle">x11</text>
           </svg>
-          <!-- Trofeo 2 -->
+
+          <!-- Trofeo 2 sin cambios -->
           <svg class="trophy" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
             <circle cx="32" cy="35" r="20" />
             <rect x="20" y="55" width="24" height="10" />
