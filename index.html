@@ -13,14 +13,12 @@
       margin: 0;
       font-family: Arial, sans-serif;
 
-      /* Fondo con líneas azules tenues */
-      background-image: repeating-linear-gradient(
-        90deg,
-        rgba(0, 71, 171, 0.07),
-        rgba(0, 71, 171, 0.07) 2px,
-        transparent 2px,
-        transparent 20px
-      );
+      /* Fondo estilo rombo (líneas cruzadas azules tenues) */
+      background-color: white;
+      background-image: 
+        linear-gradient(45deg, rgba(0, 71, 171, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 71, 171, 0.06) 75%),
+        linear-gradient(-45deg, rgba(0, 71, 171, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 71, 171, 0.06) 75%);
+      background-size: 40px 40px;
     }
 
     header {
@@ -110,7 +108,6 @@
       max-width: 800px;
       margin: 40px auto 60px auto;
       border-radius: 8px;
-      font-family: Arial, sans-serif;
       text-align: center;
     }
 
@@ -147,7 +144,6 @@
     .x11-text {
       font-size: 70px;
       font-weight: bold;
-      font-family: Arial, sans-serif;
       color: white;
       user-select: none;
       flex-shrink: 0;
@@ -207,7 +203,6 @@
       </div>
     </div>
 
-    <!-- CUADRO TROFEOS NACIONALES -->
     <div class="trophies-container">
       <div class="trophies-title">Títulos Nacionales</div>
       <div class="trophies-row">
@@ -238,7 +233,6 @@
       </div>
     </div>
 
-    <!-- CUADRO TROFEOS INTERNACIONALES -->
     <div class="trophies-container" style="background-color: #003b8b;">
       <div class="trophies-title">Títulos Internacionales</div>
       <div class="trophies-row">
@@ -250,7 +244,6 @@
         <div class="x11-text">x5</div>
       </div>
     </div>
-
   </main>
 </body>
 </html>
