@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vélez Fans</title>
   <style>
     * {
@@ -20,7 +20,8 @@
       color: white;
       padding: 10px 20px;
       text-align: center;
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: bold;
     }
 
     nav {
@@ -44,9 +45,41 @@
     }
 
     main {
-      padding: 15px;
-      text-align: center;
-      font-size: 16px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0047ab;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 18px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery img {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -56,13 +89,23 @@
   </header>
 
   <nav>
+    <a href="index.html">Inicio</a>
     <a href="libertadores.html">Libertadores</a>
     <a href="historia.html">Historia</a>
     <a href="torneos.html">Torneos Locales</a>
   </nav>
 
   <main>
-    <p>Bienvenidos a la página de los fanáticos del Fortín. Pronto vas a encontrar info de la Libertadores, la historia y los torneos del club.</p>
+    <h2>Bienvenidos a Vélez Fans</h2>
+    <p>
+      Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
+    </p>
+
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Estadio_Jos%C3%A9_Amalfitani.jpg/640px-Estadio_Jos%C3%A9_Amalfitani.jpg" alt="Estadio José Amalfitani" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+    </div>
   </main>
 </body>
 </html>
