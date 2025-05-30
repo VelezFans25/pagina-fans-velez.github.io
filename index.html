@@ -12,12 +12,10 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-
-      /* Fondo estilo rombo (líneas cruzadas azules tenues) */
       background-color: white;
       background-image: 
-        linear-gradient(45deg, rgba(0, 71, 171, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 71, 171, 0.06) 75%),
-        linear-gradient(-45deg, rgba(0, 71, 171, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 71, 171, 0.06) 75%);
+        linear-gradient(45deg, #0047ab 1px, transparent 1px),
+        linear-gradient(-45deg, #0047ab 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
@@ -53,10 +51,8 @@
     main {
       padding: 20px;
       max-width: 1000px;
-      margin: 40px auto;
+      margin: auto;
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
@@ -108,6 +104,7 @@
       max-width: 800px;
       margin: 40px auto 60px auto;
       border-radius: 8px;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
 
@@ -144,6 +141,7 @@
     .x11-text {
       font-size: 70px;
       font-weight: bold;
+      font-family: Arial, sans-serif;
       color: white;
       user-select: none;
       flex-shrink: 0;
@@ -203,6 +201,7 @@
       </div>
     </div>
 
+    <!-- CUADRO TROFEOS NACIONALES -->
     <div class="trophies-container">
       <div class="trophies-title">Títulos Nacionales</div>
       <div class="trophies-row">
@@ -233,6 +232,7 @@
       </div>
     </div>
 
+    <!-- CUADRO TROFEOS INTERNACIONALES -->
     <div class="trophies-container" style="background-color: #003b8b;">
       <div class="trophies-title">Títulos Internacionales</div>
       <div class="trophies-row">
@@ -244,6 +244,7 @@
         <div class="x11-text">x5</div>
       </div>
     </div>
+
   </main>
 </body>
 </html>
