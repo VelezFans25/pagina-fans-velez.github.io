@@ -14,30 +14,27 @@
       font-family: Arial, sans-serif;
       background-color: white;
       background-image:
-        repeating-linear-gradient(135deg, rgba(0, 71, 171, 0.05) 0, rgba(0, 71, 171, 0.05) 1px, transparent 1px, transparent 30px),
-        repeating-linear-gradient(-135deg, rgba(0, 71, 171, 0.05) 0, rgba(0, 71, 171, 0.05) 1px, transparent 1px, transparent 30px);
+        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
     }
 
     header {
       background-color: #0047ab;
       color: white;
+      padding: 10px 20px;
+      font-size: 28px;
+      font-weight: bold;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      font-size: 24px;
-      font-weight: bold;
-      position: relative;
     }
 
-    .menu-toggle {
+    .menu-button {
       font-size: 28px;
-      cursor: pointer;
+      margin-right: 20px;
       background: none;
       border: none;
       color: white;
-      margin-right: auto; /* mueve a la izquierda */
-      margin-left: 0;
+      cursor: pointer;
     }
 
     .side-menu {
@@ -54,7 +51,7 @@
     }
 
     .side-menu a {
-      padding: 10px 25px;
+      padding: 10px 30px;
       text-decoration: none;
       font-size: 18px;
       color: white;
@@ -64,10 +61,6 @@
 
     .side-menu a:hover {
       background-color: #0047ab;
-    }
-
-    nav {
-      display: none;
     }
 
     main {
@@ -125,7 +118,6 @@
       max-width: 800px;
       margin: 40px auto 60px auto;
       border-radius: 8px;
-      font-family: Arial, sans-serif;
       text-align: center;
     }
 
@@ -181,18 +173,18 @@
   </style>
 </head>
 <body>
+  <div id="sideMenu" class="side-menu">
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+  </div>
+
   <header>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
     Vélez Sarsfield
   </header>
-
-  <div id="sideMenu" class="side-menu">
-    <a href="historia.html">Historia</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="idolos.html">Ídolos</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="plantel.html">Plantel</a>
-  </div>
 
   <main>
     <h2>Bienvenidos a Vélez Fans</h2>
@@ -223,17 +215,38 @@
       </div>
     </div>
 
+    <!-- CUADRO TROFEOS NACIONALES -->
     <div class="trophies-container">
       <div class="trophies-title">Títulos Nacionales</div>
       <div class="trophies-row">
         <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="75" width="44" height="12" class="trophy-base" rx="3" ry="3" />
-          <path d="M20 15 Q18 10 26 10 L38 10 Q46 10 44 15 L54 28 Q57 33 52 40 L52 60 Q60 65 60 75 Q60 80 54 80 L50 90 L14 90 L10 80 Q4 80 4 75 Q4 65 12 60 L12 40 Q7 33 10 28 Z" fill="#0047ab" stroke="white" stroke-width="3"/>
+          <path 
+            d="M20 15 
+               Q18 10 26 10 
+               L38 10 
+               Q46 10 44 15 
+               L54 28 
+               Q57 33 52 40 
+               L52 60 
+               Q60 65 60 75 
+               Q60 80 54 80 
+               L50 90 
+               L14 90 
+               L10 80 
+               Q4 80 4 75 
+               Q4 65 12 60 
+               L12 40 
+               Q7 33 10 28 
+               Z" 
+            fill="#0047ab" stroke="white" stroke-width="3"
+          />
         </svg>
         <div class="x11-text">x11</div>
       </div>
     </div>
 
+    <!-- CUADRO TROFEOS INTERNACIONALES -->
     <div class="trophies-container" style="background-color: #003b8b;">
       <div class="trophies-title">Títulos Internacionales</div>
       <div class="trophies-row">
@@ -245,6 +258,7 @@
         <div class="x11-text">x5</div>
       </div>
     </div>
+
   </main>
 
   <script>
@@ -255,6 +269,10 @@
       } else {
         menu.style.width = "250px";
       }
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
     }
   </script>
 </body>
