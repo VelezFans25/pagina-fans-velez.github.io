@@ -27,51 +27,6 @@
         transparent 2px,
         transparent 20px
       );
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* Menú lateral fijo */
-    nav.side-menu {
-      background-color: #003b8b;
-      width: 220px;
-      padding-top: 20px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      overflow-y: auto;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    }
-
-    nav.side-menu a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      font-weight: bold;
-      font-size: 18px;
-      border-left: 5px solid transparent;
-      transition: background-color 0.3s, border-left-color 0.3s;
-    }
-
-    nav.side-menu a:hover {
-      background-color: #0047ab;
-      border-left-color: #ffffff;
-    }
-
-    /* Contenido principal */
-    main {
-      margin-left: 220px;
-      padding: 30px 20px;
-      max-width: 900px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      min-height: 100vh;
     }
 
     header {
@@ -81,14 +36,41 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      margin-bottom: 20px;
-      border-radius: 10px 10px 0 0;
+    }
+
+    nav {
+      background-color: #003b8b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      padding: 0 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     h2 {
       color: #0047ab;
       text-align: center;
-      margin-top: 0;
+      margin-top: 30px;
     }
 
     .idols-gallery {
@@ -96,7 +78,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      padding: 10px 0 30px 0;
+      padding: 20px 10px;
     }
 
     .idol-card {
@@ -111,9 +93,6 @@
       transition: border-color 0.3s, background-color 0.3s;
       text-align: center;
       user-select: none;
-      flex: 1 1 200px;
-      max-width: 220px;
-      text-decoration: none;
     }
 
     .idol-card:hover {
@@ -155,14 +134,12 @@
       font-weight: bold;
       font-size: 22px;
       text-align: center;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     .palmares ul {
       list-style: none;
       padding-left: 0;
       font-size: 16px;
-      line-height: 1.4;
     }
 
     .palmares ul li {
@@ -178,42 +155,28 @@
       top: 0;
     }
 
-    .more-info {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #002f7a;
-      text-decoration: none;
-    }
-
-    .more-info:hover {
-      text-decoration: underline;
-    }
-
     html {
       scroll-behavior: smooth;
     }
 
-    /* Responsive: en móviles ocultamos el menú lateral y el main usa todo el ancho */
-    @media (max-width: 768px) {
-      nav.side-menu {
-        display: none;
+    @media (max-width: 600px) {
+      .idol-card {
+        width: 90%;
       }
-      main {
-        margin-left: 0;
-        border-radius: 0;
-        box-shadow: none;
-        min-height: auto;
-      }
-      header {
-        border-radius: 0;
+
+      .palmares {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="side-menu" aria-label="Menú principal">
+
+  <header>
+    Vélez Sarsfield - Ídolos
+  </header>
+
+  <nav>
     <a href="index.html">Inicio</a>
     <a href="libertadores.html">Libertadores</a>
     <a href="historia.html">Historia</a>
@@ -222,8 +185,6 @@
   </nav>
 
   <main>
-    <header>Vélez Sarsfield - Ídolos</header>
-
     <h2>Galería de Ídolos de Vélez Sarsfield</h2>
 
     <div class="idols-gallery">
@@ -235,40 +196,81 @@
       <a href="#montes" class="idol-card">Diego Montes</a>
     </div>
 
+    <!-- Detalles ídolos -->
     <section id="bianchi" class="idol-detail">
       <h3>Carlos Bianchi</h3>
-      <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales, dejando una huella imborrable en el Fortín.</p>
+      <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales.</p>
       <div class="palmares">
         <h4>Palmarés</h4>
         <ul>
-          <li>11 títulos locales con Vélez</li>
+          <li>11 títulos locales</li>
           <li>1 Copa Libertadores (1994)</li>
           <li>1 Copa Intercontinental (1994)</li>
-          <li>3 Copas Sudamericanas</li>
         </ul>
       </div>
-      <a href="https://es.wikipedia.org/wiki/Carlos_Bianchi" target="_blank" class="more-info" rel="noopener noreferrer">Ver más sobre su carrera</a>
     </section>
 
     <section id="sanchez" class="idol-detail">
       <h3>Walter Sánchez</h3>
-      <p>Walter Sánchez fue un jugador clave en la defensa de Vélez durante los años 80 y 90, destacándose por su entrega y liderazgo dentro del campo.</p>
+      <p>Legendario defensor central, formó parte de la base del Vélez campeón en los años 80. Su entrega y liderazgo lo convirtieron en un ídolo.</p>
       <div class="palmares">
         <h4>Palmarés</h4>
         <ul>
-          <li>5 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</li>
-          <li>1 Copa Intercontinental (1994)</li>
+          <li>2 Torneos Nacionales</li>
+          <li>1 Copa Argentina</li>
         </ul>
       </div>
-      <a href="https://es.wikipedia.org/wiki/Walter_Sánchez" target="_blank" class="more-info" rel="noopener noreferrer">Ver más sobre su carrera</a>
     </section>
 
     <section id="rueda" class="idol-detail">
       <h3>Óscar Rueda</h3>
-      <p>Óscar Rueda es recordado por su habilidad técnica y sus aportes en el mediocampo durante la época dorada de Vélez Sarsfield en los 90.</p>
+      <p>Mediocampista de gran calidad técnica, fue un motor del equipo en los años 70. Recordado por su visión de juego y goles claves.</p>
       <div class="palmares">
         <h4>Palmarés</h4>
         <ul>
-          <li>7 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</
+          <li>1 Torneo Metropolitano</li>
+          <li>Máximo asistidor de la temporada 1975</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gomez" class="idol-detail">
+      <h3>Ricardo Gómez</h3>
+      <p>Delantero veloz y potente, clave en la obtención de campeonatos locales durante los años 90. Su conexión con los hinchas fue única.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>3 Torneos Clausura</li>
+          <li>1 Supercopa Sudamericana</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="castillo" class="idol-detail">
+      <h3>Hugo Castillo</h3>
+      <p>Arquero histórico que defendió el arco de Vélez con valentía y reflejos increíbles. Figura en partidos clave de la Libertadores.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>1 Copa Libertadores (1994)</li>
+          <li>2 Torneos Apertura</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="montes" class="idol-detail">
+      <h3>Diego Montes</h3>
+      <p>Capitán durante los años dorados del club. Su liderazgo en el mediocampo y capacidad de recuperación lo hicieron indispensable.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>5 títulos locales</li>
+          <li>1 Recopa Sudamericana</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
