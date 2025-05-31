@@ -105,12 +105,6 @@
       margin: 10px 0 5px;
     }
 
-    @media (max-width: 600px) {
-      .gallery-item {
-        width: 90%;
-      }
-    }
-
     .trophies-container {
       background-color: #0047ab;
       color: white;
@@ -133,22 +127,7 @@
       align-items: center;
       gap: 40px;
       flex-wrap: nowrap;
-    }
-
-    svg.trophy {
-      width: 120px;
-      height: 160px;
-      fill: #0047ab;
-      stroke: white;
-      stroke-width: 3;
-      border-radius: 5px;
-      flex-shrink: 0;
-    }
-
-    .trophy-base {
-      fill: #0047ab;
-      stroke: white;
-      stroke-width: 3;
+      flex-direction: column;
     }
 
     .x11-text {
@@ -157,17 +136,20 @@
       font-family: Arial, sans-serif;
       color: white;
       user-select: none;
-      flex-shrink: 0;
     }
 
     @media (max-width: 600px) {
-      .trophies-row {
-        flex-wrap: wrap;
+      .gallery-item {
+        width: 90%;
       }
 
       .x11-text {
         font-size: 50px;
         margin-top: 20px;
+      }
+
+      .trophies-row {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -218,29 +200,7 @@
     <div class="trophies-container">
       <div class="trophies-title">Títulos Nacionales</div>
       <div class="trophies-row">
-        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="75" width="44" height="12" class="trophy-base" rx="3" ry="3" />
-          <path 
-            d="M20 15 
-               Q18 10 26 10 
-               L38 10 
-               Q46 10 44 15 
-               L54 28 
-               Q57 33 52 40 
-               L52 60 
-               Q60 65 60 75 
-               Q60 80 54 80 
-               L50 90 
-               L14 90 
-               L10 80 
-               Q4 80 4 75 
-               Q4 65 12 60 
-               L12 40 
-               Q7 33 10 28 
-               Z" 
-            fill="#0047ab" stroke="white" stroke-width="3"
-          />
-        </svg>
+        <img src="trofeos-velez.png" alt="Títulos Nacionales Vélez" style="width: 200px; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
         <div class="x11-text">x11</div>
       </div>
     </div>
@@ -248,15 +208,10 @@
     <div class="trophies-container" style="background-color: #003b8b;">
       <div class="trophies-title">Títulos Internacionales</div>
       <div class="trophies-row">
-        <svg class="trophy" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="20" r="10" fill="#0047ab" stroke="white" stroke-width="3" />
-          <rect x="26" y="30" width="12" height="30" fill="#0047ab" stroke="white" stroke-width="3" />
-          <rect x="20" y="60" width="24" height="12" fill="#0047ab" stroke="white" stroke-width="3" />
-        </svg>
+        <img src="trofeos-velez.png" alt="Títulos Internacionales Vélez" style="width: 200px; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
         <div class="x11-text">x5</div>
       </div>
     </div>
-
   </main>
 
   <script>
