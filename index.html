@@ -105,52 +105,22 @@
       margin: 10px 0 5px;
     }
 
-    .trophies-container {
-      background-color: #0047ab;
-      color: white;
-      padding: 30px 20px 60px 20px;
-      max-width: 800px;
-      margin: 40px auto 60px auto;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .trophies-title {
-      font-weight: bold;
-      font-size: 28px;
-      margin-bottom: 40px;
-    }
-
-    .trophies-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: nowrap;
-      flex-direction: column;
-    }
-
-    .x11-text {
-      font-size: 70px;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      color: white;
-      user-select: none;
-    }
-
     @media (max-width: 600px) {
       .gallery-item {
         width: 90%;
       }
+    }
 
-      .x11-text {
-        font-size: 50px;
-        margin-top: 20px;
-      }
+    .custom-photo {
+      text-align: center;
+      margin: 60px auto;
+    }
 
-      .trophies-row {
-        flex-wrap: wrap;
-      }
+    .custom-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
   </style>
 </head>
@@ -197,20 +167,8 @@
       </div>
     </div>
 
-    <div class="trophies-container">
-      <div class="trophies-title">Títulos Nacionales</div>
-      <div class="trophies-row">
-        <img src="trofeos-velez.png" alt="Títulos Nacionales Vélez" style="width: 200px; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-        <div class="x11-text">x11</div>
-      </div>
-    </div>
-
-    <div class="trophies-container" style="background-color: #003b8b;">
-      <div class="trophies-title">Títulos Internacionales</div>
-      <div class="trophies-row">
-        <img src="trofeos-velez.png" alt="Títulos Internacionales Vélez" style="width: 200px; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-        <div class="x11-text">x5</div>
-      </div>
+    <div class="custom-photo">
+      <img src="trofeos-velez.jpg" alt="Trofeos internacionales y nacionales de Vélez" />
     </div>
   </main>
 
