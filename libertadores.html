@@ -1,72 +1,66 @@
 <!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Libertadores - Vélez Fans</title>
   <style>
     * {
       box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
     }body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: white;
+  color: black;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
 header {
   background-color: #0047ab;
   color: white;
-  padding: 15px 20px;
-  font-size: 28px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 24px;
+  position: relative;
 }
 
-.menu-button {
-  font-size: 28px;
-  background: white;
-  border: none;
-  color: #0047ab;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
-.side-menu {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
+nav {
   background-color: #003b8b;
-  overflow-x: hidden;
-  transition: width 0.3s ease;
-  padding-top: 60px;
-  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
 }
 
-.side-menu a {
-  padding: 10px 30px;
-  text-decoration: none;
-  font-size: 18px;
+nav a {
   color: white;
-  display: block;
-  transition: 0.2s;
+  text-decoration: none;
+  margin: 8px 15px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-.side-menu a:hover {
-  background-color: #0047ab;
+nav a:hover {
+  text-decoration: underline;
 }
 
 main {
   padding: 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
 }
 
 h2, h3 {
   color: #0047ab;
+}
+
+body.dark-mode h2, 
+body.dark-mode h3 {
+  color: #90caf9;
 }
 
 p {
@@ -78,72 +72,49 @@ ul {
   padding-left: 20px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  margin-bottom: 25px;
+#darkModeToggle {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-table, th, td {
-  border: 1px solid #0047ab;
-}
-
-th, td {
-  padding: 8px;
-  text-align: center;
-}
-
-th {
-  background-color: #0047ab;
+body.dark-mode #darkModeToggle {
+  background-color: #444;
   color: white;
 }
 
 iframe {
   width: 100%;
-  height: 315px;
-  margin: 15px 0;
-  border: none;
-}
-
-h4 {
-  margin-top: 40px;
-  color: #003b8b;
-}
-
-@media (max-width: 600px) {
-  .menu-button {
-    font-size: 24px;
-  }
-
-  iframe {
-    height: 200px;
-  }
+  height: 250px;
+  margin: 10px 0;
 }
 
   </style>
 </head>
-<body>  <div id="sideMenu" class="side-menu">
-    <a href="index.html" onclick="closeMenu()">Inicio</a>
-    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
-    <a href="historia.html" onclick="closeMenu()">Historia</a>
-    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
-    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
-    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
-    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
-  </div>  <header>
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
-    Vélez Sarsfield - Libertadores
-  </header>  <main>
-    <h2>La Historia de Vélez Sarsfield en la Copa Libertadores</h2>
+<body>
+  <header>
+    Vélez Sarsfield
+    <button id="darkModeToggle">Modo Oscuro</button>
+  </header>  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="libertadores.html">Libertadores</a>
+    <a href="historia.html">Historia</a>
+    <a href="torneos.html">Torneos Locales</a>
+    <a href="idolos.html">Ídolos</a>
+  </nav>  <main>
+    <h2>Vélez en la Copa Libertadores</h2>
     <p>
-      Vélez Sarsfield ha sido un protagonista constante del torneo más prestigioso de América del Sur. Su recorrido combina campañas consistentes, figuras legendarias y un estilo de juego respetado en todo el continente. Desde su primera participación en 1971 hasta la actualidad, el club ha sido sinónimo de competitividad y grandeza internacional.
+      Vélez Sarsfield ha tenido una historia destacada en la Copa Libertadores, el torneo de clubes más prestigioso de América del Sur. Con múltiples participaciones, el Fortín se ha consolidado como uno de los equipos argentinos más competitivos en el ámbito continental. Su presencia constante y rendimiento sólido lo convierten en protagonista frecuente del certamen.
     </p><h3>Campeón de América - 1994</h3>
 <p>
-  En 1994, Vélez escribió la página más gloriosa de su historia al consagrarse campeón de la Copa Libertadores. El equipo, dirigido por Carlos Bianchi, mostró solidez defensiva, talento individual y temple en los momentos decisivos. 
-</p>
-<p>
-  La final frente a São Paulo fue una batalla épica: ganó 1-0 en el Amalfitani, cayó 1-0 en el Morumbí, y en la tanda de penales Vélez se impuso 5-3, coronándose como el mejor equipo del continente. Esta hazaña no solo marcó un antes y un después en la historia del club, sino que también lo clasificó a la Copa Intercontinental, que también ganó frente al Milan.
+  En 1994, bajo la conducción de Carlos Bianchi, Vélez logró su mayor gesta internacional. El equipo supo superar duras fases eliminatorias hasta alcanzar la final frente a São Paulo FC, campeón defensor. En Liniers ganó 1-0 con gol de Omar Asad y, tras perder por el mismo resultado en Brasil, se consagró campeón en los penales (5-3). Este título marcó un antes y un después en la historia del club, consagrándolo como uno de los grandes del continente.
 </p>
 
 <ul>
@@ -153,86 +124,71 @@ h4 {
 </ul>
 
 <h3>Participaciones destacadas</h3>
-<p>Además del título en 1994, Vélez alcanzó instancias importantes en varias ediciones:</p>
 <ul>
-  <li><strong>1980:</strong> Primera gran aparición internacional, semifinalista tras eliminar a rivales históricos.</li>
-  <li><strong>1995:</strong> Defensor del título, llegó a semifinales y perdió con Atlético Nacional en un duelo cerrado.</li>
-  <li><strong>2005:</strong> Con un equipo renovado, logró llegar nuevamente a semifinales con actuaciones destacadas.</li>
-  <li><strong>2011:</strong> Bajo la dirección de Ricardo Gareca, alcanzó las semifinales cayendo ante Peñarol.</li>
+  <li>Semifinalista: 1980, 1995, 2005, 2011</li>
+  <li>Cuartos de final: 1998, 2007, 2012, 2013</li>
+  <li>Octavos de final: 1997, 2006, 2021, 2022</li>
+  <li>Fase de grupos: 15 veces en total</li>
 </ul>
 
-<h4>Resumen de fases alcanzadas</h4>
-<table>
-  <tr>
-    <th>Fase</th>
-    <th>Veces alcanzada</th>
-  </tr>
-  <tr>
-    <td>Fase de grupos</td>
-    <td>17</td>
-  </tr>
-  <tr>
-    <td>Octavos de final</td>
-    <td>10</td>
-  </tr>
-  <tr>
-    <td>Cuartos de final</td>
-    <td>6</td>
-  </tr>
-  <tr>
-    <td>Semifinales</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>Final</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>Campeón</td>
-    <td>1 (1994)</td>
-  </tr>
-</table>
-
-<h4>Estadísticas históricas de Vélez en la Libertadores</h4>
+<h3>Estadísticas históricas</h3>
 <ul>
-  <li>Partidos disputados: 144</li>
-  <li>Victorias: 68</li>
+  <li>Partidos jugados: 138</li>
+  <li>Victorias: 63</li>
   <li>Empates: 36</li>
-  <li>Derrotas: 40</li>
-  <li>Goles a favor: 192</li>
+  <li>Derrotas: 39</li>
+  <li>Goles a favor: 178</li>
   <li>Goles en contra: 134</li>
   <li>Mayor goleada a favor: 5-0 vs. Everton (2009)</li>
 </ul>
 
-<h4>Videos con datos curiosos y momentos históricos</h4>
-<iframe src="https://www.youtube.com/embed/YK5_rTeH28c" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/mu9vbxJ8paA" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/NXfeYdnPQss" allowfullscreen></iframe>
+<h3>Desempeño por fase en la Copa Libertadores</h3>
+<div style="margin-top: 20px; padding: 10px; background-color: #f0f4ff; border-radius: 8px;">
+  <div style="margin-bottom: 10px;">
+    <strong>Fase de grupos:</strong> 15 veces
+    <div style="background-color: #0047ab; height: 20px; width: 75%; max-width: 100%;"></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <strong>Octavos de final:</strong> 4 veces
+    <div style="background-color: #005bb5; height: 20px; width: 20%; max-width: 100%;"></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <strong>Cuartos de final:</strong> 4 veces
+    <div style="background-color: #0070d1; height: 20px; width: 20%; max-width: 100%;"></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <strong>Semifinales:</strong> 4 veces
+    <div style="background-color: #2986ff; height: 20px; width: 20%; max-width: 100%;"></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <strong>Finales:</strong> 1 vez
+    <div style="background-color: #66aaff; height: 20px; width: 5%; max-width: 100%;"></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <strong>Campeón:</strong> 1 vez
+    <div style="background-color: #90caf9; height: 20px; width: 5%; max-width: 100%;"></div>
+  </div>
+</div>
+
+<h3>Videos con datos curiosos y momentos históricos</h3>
+<iframe src="https://www.youtube.com/embed/OtaqzGI2jAw" title="Vélez campeón Libertadores 1994" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/lN4YrmIm_1k" title="Datos históricos Vélez en Copa Libertadores" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wx5LeHMGEgA" title="Goleadas y partidos memorables" allowfullscreen></iframe>
 
   </main>  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      if (menu.style.width === "250px") {
-        closeMenu();
-      } else {
-        menu.style.width = "250px";
-      }
+    const toggleButton = document.getElementById("darkModeToggle");
+    const body = document.body;
+
+    if (localStorage.getItem("modoOscuro") === "true") {
+      body.classList.add("dark-mode");
+      toggleButton.textContent = "Modo Claro";
     }
 
-    function closeMenu() {
-      document.getElementById("sideMenu").style.width = "0";
-    }
-
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("sideMenu");
-      const button = document.querySelector(".menu-button");
-
-      const clickedInsideMenu = menu.contains(event.target);
-      const clickedMenuButton = button.contains(event.target);
-
-      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
-        closeMenu();
-      }
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      const modoOscuroActivo = body.classList.contains("dark-mode");
+      toggleButton.textContent = modoOscuroActivo ? "Modo Claro" : "Modo Oscuro";
+      localStorage.setItem("modoOscuro", modoOscuroActivo);
     });
   </script></body>
 </html>
