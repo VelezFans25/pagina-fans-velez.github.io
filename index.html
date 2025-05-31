@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vélez Fans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vélez Sarsfield - Inicio</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,29 +12,33 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: white;
-      background-image:
-        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
-        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
-    }
-
-    header {
-      background-color: #0047ab;
-      color: white;
-      padding: 10px 20px;
-      font-size: 28px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
+      background-color: #f0f4fc;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 71, 171, 0.05),
+        rgba(0, 71, 171, 0.05) 2px,
+        transparent 2px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 71, 171, 0.05),
+        rgba(0, 71, 171, 0.05) 2px,
+        transparent 2px,
+        transparent 20px
+      );
     }
 
     .menu-button {
-      font-size: 28px;
-      margin-left: 0;
+      font-size: 30px;
       background: none;
       border: none;
-      color: white;
+      color: #0047ab;
       cursor: pointer;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1100;
     }
 
     .side-menu {
@@ -47,16 +51,22 @@
       overflow-x: hidden;
       transition: width 0.3s ease;
       padding-top: 60px;
-      z-index: 1000;
+      z-index: 1050;
+      color: white;
+      font-weight: bold;
+    }
+
+    .side-menu.open {
+      width: 260px;
     }
 
     .side-menu a {
-      padding: 10px 30px;
+      padding: 15px 30px;
       text-decoration: none;
       font-size: 18px;
       color: white;
       display: block;
-      transition: 0.2s;
+      transition: background-color 0.2s;
     }
 
     .side-menu a:hover {
@@ -64,139 +74,101 @@
     }
 
     main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      padding: 0 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: margin-left 0.3s ease;
+    }
+
+    main.menu-open {
+      margin-left: 280px;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
     }
 
     h2 {
       color: #0047ab;
+      text-align: center;
+      margin-top: 30px;
     }
 
     p {
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.5;
       text-align: justify;
-      font-size: 18px;
+      max-width: 700px;
+      margin: 20px auto;
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 20px;
-    }
-
-    .gallery-item {
-      text-align: center;
-      max-width: 300px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item h3 {
-      font-size: 18px;
-      color: #0047ab;
-      margin: 10px 0 5px;
+    html {
+      scroll-behavior: smooth;
     }
 
     @media (max-width: 600px) {
-      .gallery-item {
-        width: 90%;
+      main.menu-open {
+        margin-left: 0;
       }
-    }
-
-    .custom-photo {
-      text-align: center;
-      margin: 60px auto;
-    }
-
-    .custom-photo img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      .side-menu.open {
+        width: 220px;
+      }
+      .menu-button {
+        left: 10px;
+        top: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="sideMenu" class="side-menu">
-    <a href="historia.html" onclick="closeMenu()">Historia</a>
+
+  <button class="menu-button" aria-label="Abrir menú" id="menuToggle">☰</button>
+
+  <nav id="sideMenu" class="side-menu" aria-hidden="true">
+    <a href="index.html" onclick="closeMenu()">Inicio</a>
     <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
-    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
     <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
     <a href="plantel.html" onclick="closeMenu()">Plantel</a>
-  </div>
+    <a href="calendario.html" onclick="closeMenu()">📅 Calendario</a>
+  </nav>
 
   <header>
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
-    Vélez Sarsfield
+    Vélez Sarsfield - Inicio
   </header>
 
   <main id="mainContent">
-    <h2>Bienvenidos a Vélez Fans</h2>
+    <h2>Bienvenidos a la Página Oficial de Vélez Sarsfield</h2>
     <p>
-      Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
+      Aquí encontrarás toda la información actualizada del club, incluyendo historia, copas, jugadores destacados, actualidad y próximos partidos.
     </p>
-
-    <div class="gallery">
-      <div class="gallery-item">
-        <h3>Estadio José Amalfitani</h3>
-        <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">
-          <img src="estadio.jpg" alt="Estadio José Amalfitani" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Campeón Libertadores 1994</h3>
-        <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
-        </a>
-      </div>
-
-      <div class="gallery-item">
-        <h3>Bandera de Vélez</h3>
-        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
-        </a>
-      </div>
-    </div>
-
-    <div class="custom-photo">
-      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
-    </div>
   </main>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      if (menu.style.width === "250px") {
-        closeMenu();
-      } else {
-        menu.style.width = "250px";
-      }
-    }
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const mainContent = document.getElementById('mainContent');
+
+    menuToggle.addEventListener('click', () => {
+      sideMenu.classList.toggle('open');
+      mainContent.classList.toggle('menu-open');
+      sideMenu.setAttribute('aria-hidden', !sideMenu.classList.contains('open'));
+    });
 
     function closeMenu() {
-      document.getElementById("sideMenu").style.width = "0";
+      sideMenu.classList.remove('open');
+      mainContent.classList.remove('menu-open');
+      sideMenu.setAttribute('aria-hidden', 'true');
     }
-
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("sideMenu");
-      const button = document.querySelector(".menu-button");
-
-      const clickedInsideMenu = menu.contains(event.target);
-      const clickedMenuButton = button.contains(event.target);
-
-      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
-        closeMenu();
-      }
-    });
   </script>
 </body>
 </html>
