@@ -2,191 +2,166 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Libertadores - Vélez Fans</title>
   <style>
     * {
       box-sizing: border-box;
       transition: background-color 0.3s, color 0.3s;
     }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: white;
       color: black;
     }
+
     body.dark-mode {
       background-color: #121212;
       color: #e0e0e0;
     }
+
     header {
       background-color: #0047ab;
       color: white;
       padding: 10px 20px;
-      text-align: center;
       font-size: 24px;
-      position: relative;
-    }
-    nav {
-      background-color: #003b8b;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 0 20px;
-      flex-wrap: wrap;
-      position: relative;
-      gap: 20px;
-    }
-    nav .logo {
-      color: white;
-      font-weight: bold;
-      font-size: 1.5rem;
-      user-select: none;
-      padding: 10px 0;
-      order: 2;
-      margin-left: auto;
-    }
-    #menu-toggle {
-      display: none;
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      width: 25px;
-      height: 20px;
       justify-content: space-between;
-      order: 1;
-    }
-    .hamburger span {
-      display: block;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-    .menu {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
       align-items: center;
-      order: 3;
+      position: relative;
     }
-    .menu li button {
+
+    #hamburger {
       background: none;
       border: none;
+      font-size: 24px;
       color: white;
-      font-size: 1.2rem;
       cursor: pointer;
-      padding: 0;
     }
+
+    #darkModeToggle {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: #003b8b;
+      position: absolute;
+      top: 60px;
+      left: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav.show {
+      display: flex;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
+      margin: 8px 0;
       font-weight: bold;
       font-size: 16px;
-      padding: 10px 8px;
-      display: block;
     }
-    nav a:hover,
-    .menu li button:hover {
+
+    nav a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-      .menu {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #003b8b;
-        flex-direction: column;
-        width: 200px;
-        border: 1px solid white;
-        display: none;
-        z-index: 10;
-      }
-      .menu li {
-        width: 100%;
-        text-align: center;
-      }
-      #menu-toggle:checked + .hamburger + .logo + .menu {
-        display: flex;
-      }
-    }
+
     main {
       padding: 20px;
       max-width: 900px;
       margin: auto;
     }
+
     h2, h3 {
       color: #0047ab;
     }
-    body.dark-mode h2,
+
+    body.dark-mode h2, 
     body.dark-mode h3 {
       color: #90caf9;
     }
+
     p {
       line-height: 1.6;
       text-align: justify;
     }
+
     ul {
       padding-left: 20px;
     }
+
     iframe {
       width: 100%;
       height: 250px;
       margin: 10px 0;
     }
+
+    .stats-bar {
+      background-color: #f0f4ff;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .stats-bar div {
+      margin-bottom: 10px;
+    }
+
+    .stats-bar div > div {
+      height: 20px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
   <header>
+    <button id="hamburger">&#9776;</button>
     Vélez Sarsfield
+    <button id="darkModeToggle">🌙</button>
   </header>
-  <nav>
-    <input type="checkbox" id="menu-toggle" />
-    <label for="menu-toggle" class="hamburger" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-    <div class="logo">Vélez</div>
-    <ul class="menu">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="historia.html">Historia</a></li>
-      <li><a href="plantel.html">Plantel</a></li>
-      <li><a href="calendario.html">Calendario</a></li>
-      <li><a href="torneos.html">Torneos Locales</a></li>
-      <li>
-        <button id="dark-mode-toggle" aria-label="Cambiar modo oscuro">🌙</button>
-      </li>
-    </ul>
+
+  <nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="historia.html">Historia</a>
+    <a href="plantel.html">Plantel</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="torneos.html">Torneos Locales</a>
   </nav>
+
   <main>
     <h2>Vélez en la Copa Libertadores</h2>
     <p>
-      Vélez Sarsfield ha tenido una historia destacada en la Copa Libertadores, el torneo de clubes más prestigioso de América del Sur. Con múltiples participaciones, el Fortín se ha consolidado como uno de los equipos argentinos más competitivos en el ámbito continental. Su presencia constante y rendimiento sólido lo convierten en protagonista frecuente del certamen.
+      Vélez Sarsfield ha tenido una historia destacada en la Copa Libertadores, el torneo de clubes más prestigioso de América del Sur...
     </p>
+
     <h3>Campeón de América - 1994</h3>
-    <p>
-      En 1994, bajo la conducción de Carlos Bianchi, Vélez logró su mayor gesta internacional. El equipo supo superar duras fases eliminatorias hasta alcanzar la final frente a São Paulo FC, campeón defensor. En Liniers ganó 1-0 con gol de Omar Asad y, tras perder por el mismo resultado en Brasil, se consagró campeón en los penales (5-3). Este título marcó un antes y un después en la historia del club, consagrándolo como uno de los grandes del continente.
-    </p>
+    <p>En 1994, bajo la conducción de Carlos Bianchi...</p>
+
     <ul>
-      <li>Partido de ida (Liniers): Vélez 1 - 0 São Paulo</li>
-      <li>Partido de vuelta (Morumbí): São Paulo 1 - 0 Vélez</li>
+      <li>Partido de ida: Vélez 1 - 0 São Paulo</li>
+      <li>Partido de vuelta: São Paulo 1 - 0 Vélez</li>
       <li>Penales: Vélez ganó 5-3</li>
     </ul>
+
     <h3>Participaciones destacadas</h3>
     <ul>
       <li>Semifinalista: 1980, 1995, 2005, 2011</li>
       <li>Cuartos de final: 1998, 2007, 2012, 2013</li>
       <li>Octavos de final: 1997, 2006, 2021, 2022</li>
-      <li>Fase de grupos: 15 veces en total</li>
+      <li>Fase de grupos: 15 veces</li>
     </ul>
+
     <h3>Estadísticas históricas</h3>
     <ul>
       <li>Partidos jugados: 138</li>
@@ -195,70 +170,48 @@
       <li>Derrotas: 39</li>
       <li>Goles a favor: 178</li>
       <li>Goles en contra: 134</li>
-      <li>Mayor goleada a favor: 5-0 vs. Everton (2009)</li>
     </ul>
-    <h3>Desempeño por fase en la Copa Libertadores</h3>
-    <div style="margin-top: 20px; padding: 10px; background-color: #f0f4ff; border-radius: 8px;">
-      <div style="margin-bottom: 10px;">
-        <strong>Fase de grupos:</strong> 15 veces
-        <div style="background-color: #0047ab; height: 20px; width: 75%; max-width: 100%;"></div>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <strong>Octavos de final:</strong> 4 veces
-        <div style="background-color: #005bb5; height: 20px; width: 20%; max-width: 100%;"></div>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <strong>Cuartos de final:</strong> 4 veces
-        <div style="background-color: #0070d1; height: 20px; width: 20%; max-width: 100%;"></div>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <strong>Semifinales:</strong> 4 veces
-        <div style="background-color: #2986ff; height: 20px; width: 20%; max-width: 100%;"></div>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <strong>Finales:</strong> 1 vez
-        <div style="background-color: #66aaff; height: 20px; width: 5%; max-width: 100%;"></div>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <strong>Campeón:</strong> 1 vez
-        <div style="background-color: #90caf9; height: 20px; width: 5%; max-width: 100%;"></div>
-      </div>
+
+    <h3>Desempeño por fase</h3>
+    <div class="stats-bar">
+      <div><strong>Fase de grupos:</strong> 15 veces <div style="background:#0047ab; width:75%;"></div></div>
+      <div><strong>Octavos:</strong> 4 veces <div style="background:#005bb5; width:20%;"></div></div>
+      <div><strong>Cuartos:</strong> 4 veces <div style="background:#0070d1; width:20%;"></div></div>
+      <div><strong>Semifinales:</strong> 4 veces <div style="background:#2986ff; width:20%;"></div></div>
+      <div><strong>Finales:</strong> 1 vez <div style="background:#66aaff; width:5%;"></div></div>
+      <div><strong>Campeón:</strong> 1 vez <div style="background:#90caf9; width:5%;"></div></div>
     </div>
-    <h3>Videos con datos curiosos y momentos históricos</h3>
-    <iframe src="https://www.youtube.com/embed/OtaqzGI2jAw" title="Vélez campeón Libertadores 1994" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/lN4YrmIm_1k" title="Datos históricos Vélez en Copa Libertadores" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/wx5LeHMGEgA" title="Goleadas y partidos memorables" allowfullscreen></iframe>
+
+    <h3>Videos históricos</h3>
+    <iframe src="https://www.youtube.com/embed/ukjIlz7xnDE" title="Resumen Final Libertadores 1994" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/LAvPWJ5U7J4" title="Goles históricos de Vélez" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/mJ2rm9FMYqg" title="Campaña 1994 completa" allowfullscreen></iframe>
   </main>
 
   <script>
-    const toggleBtn = document.getElementById("dark-mode-toggle");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
     const body = document.body;
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.querySelector(".menu");
-    const hamburger = document.querySelector(".hamburger");
 
-    // Modo oscuro guardado en localStorage
+    // Modo oscuro persistente
     if (localStorage.getItem("modoOscuro") === "true") {
       body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    } else {
-      toggleBtn.textContent = "🌙";
     }
 
-    toggleBtn.addEventListener("click", () => {
+    darkModeToggle.addEventListener("click", () => {
       body.classList.toggle("dark-mode");
-      const modoOscuroActivo = body.classList.contains("dark-mode");
-      toggleBtn.textContent = modoOscuroActivo ? "☀️" : "🌙";
-      localStorage.setItem("modoOscuro", modoOscuroActivo);
+      localStorage.setItem("modoOscuro", body.classList.contains("dark-mode"));
     });
 
-    // Cerrar menú si clickeás fuera del menú o botón hamburguesa
-    document.addEventListener("click", (event) => {
-      const clickedInsideMenu = menu.contains(event.target);
-      const clickedHamburger = hamburger.contains(event.target);
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+    });
 
-      if (!clickedInsideMenu && !clickedHamburger) {
-        menuToggle.checked = false;
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && e.target !== hamburger) {
+        menu.classList.remove("show");
       }
     });
   </script>
