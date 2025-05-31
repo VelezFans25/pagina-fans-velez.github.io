@@ -29,36 +29,9 @@
       );
     }
 
-    /* Menú lateral */
-    .side-menu {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0; /* Desde izquierda */
-      background-color: #003b8b;
-      overflow-x: hidden;
-      transition: width 0.3s ease;
-      padding-top: 60px;
-      z-index: 1000;
-    }
-
-    .side-menu a {
-      padding: 10px 30px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-      transition: 0.2s;
-    }
-
-    .side-menu a:hover {
-      background-color: #0047ab;
-    }
-
-    /* Botón hamburguesa */
+    /* --- Menú hamburguesa --- */
     .menu-button {
-      font-size: 28px;
+      font-size: 30px;
       background: none;
       border: none;
       color: #0047ab;
@@ -69,7 +42,51 @@
       z-index: 1100;
     }
 
-    /* Header */
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1050;
+    }
+
+    .side-menu.open {
+      width: 250px;
+    }
+
+    .side-menu a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: background-color 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #0047ab;
+    }
+
+    /* Contenido principal con margen para no quedar tapado por menú */
+    main {
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      padding: 0 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: margin-left 0.3s ease;
+    }
+
+    main.menu-open {
+      margin-left: 270px;
+    }
+
     header {
       background-color: #0047ab;
       color: white;
@@ -77,20 +94,28 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      margin-left: 0; /* No desplazamos */
+      position: relative;
     }
 
     nav {
-      display: none; /* No usamos nav desktop porque usamos menú lateral */
+      background-color: #003b8b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      margin-top: 15px;
     }
 
-    main {
-      max-width: 900px;
-      margin: 80px auto 60px auto; /* Margin top para que no tape el botón */
-      padding: 0 15px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     h2 {
@@ -99,6 +124,7 @@
       margin-top: 30px;
     }
 
+    /* Galería sin fotos, solo lista de nombres */
     .idols-gallery {
       display: flex;
       flex-wrap: wrap;
@@ -119,7 +145,6 @@
       transition: border-color 0.3s, background-color 0.3s;
       text-align: center;
       user-select: none;
-      text-decoration: none;
     }
 
     .idol-card:hover {
@@ -127,6 +152,7 @@
       background-color: #e1e8f8;
     }
 
+    /* Sección detalles ídolos */
     section.idol-detail {
       margin-top: 50px;
       padding: 20px;
@@ -145,6 +171,7 @@
       margin-bottom: 20px;
     }
 
+    /* Palmarés organizado */
     .palmares {
       background-color: #0047ab;
       color: white;
@@ -184,6 +211,7 @@
       top: 0;
     }
 
+    /* Link extra info */
     .more-info {
       display: block;
       text-align: center;
@@ -213,38 +241,47 @@
       .palmares {
         max-width: 100%;
       }
+
+      main.menu-open {
+        margin-left: 0;
+      }
+
+      .menu-button {
+        position: fixed;
+        left: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Menú lateral -->
-  <div id="sideMenu" class="side-menu">
+
+  <button class="menu-button" aria-label="Abrir menú" id="menuToggle">☰</button>
+
+  <nav id="sideMenu" class="side-menu" aria-hidden="true">
     <a href="index.html" onclick="closeMenu()">Inicio</a>
     <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
     <a href="historia.html" onclick="closeMenu()">Historia</a>
     <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
     <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
-  </div>
-
-  <!-- Botón menú hamburguesa -->
-  <button class="menu-button" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+  </nav>
 
   <header>
     Vélez Sarsfield - Ídolos
   </header>
 
-  <main>
+  <main id="mainContent">
     <h2>Galería de Ídolos de Vélez Sarsfield</h2>
 
     <div class="idols-gallery">
       <a href="#bianchi" class="idol-card">Carlos Bianchi</a>
       <a href="#sanchez" class="idol-card">Walter Sánchez</a>
       <a href="#rueda" class="idol-card">Óscar Rueda</a>
-      <a href="#merlo" class="idol-card">Ricardo Gareca</a>
-      <a href="#maradona" class="idol-card">José Luis Chilavert</a>
-      <a href="#chilavert" class="idol-card">Hugo Maradona</a>
+      <a href="#gomez" class="idol-card">Ricardo Gómez</a>
+      <a href="#castillo" class="idol-card">Hugo Castillo</a>
+      <a href="#montes" class="idol-card">Diego Montes</a>
     </div>
 
+    <!-- Detalles ídolos -->
     <section id="bianchi" class="idol-detail">
       <h3>Carlos Bianchi</h3>
       <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales, dejando una huella imborrable en el Fortín.</p>
@@ -254,70 +291,4 @@
           <li>11 títulos locales con Vélez</li>
           <li>1 Copa Libertadores (1994)</li>
           <li>1 Copa Intercontinental (1994)</li>
-          <li>3 Copas Sudamericanas</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/Carlos_Bianchi" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="sanchez" class="idol-detail">
-      <h3>Walter Sánchez</h3>
-      <p>Walter Sánchez fue un jugador clave en la defensa de Vélez durante los años 80 y 90, destacándose por su entrega y liderazgo dentro del campo.</p>
-      <div class="palmares">
-        <h4>Palmarés</h4>
-        <ul>
-          <li>5 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</li>
-          <li>1 Copa Intercontinental (1994)</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/Walter_Sánchez" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="rueda" class="idol-detail">
-      <h3>Óscar Rueda</h3>
-      <p>Óscar Rueda es recordado por su habilidad técnica y sus aportes en el mediocampo durante la época dorada de Vélez Sarsfield en los 90.</p>
-      <div class="palmares">
-        <h4>Palmarés</h4>
-        <ul>
-          <li>7 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</li>
-          <li>1 Copa Intercontinental (1994)</li>
-          <li>2 Copas Sudamericanas</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/%C3%93scar_Rueda" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="merlo" class="idol-detail">
-      <h3>Ricardo Gareca</h3>
-      <p>Ricardo Gareca, exjugador y entrenador argentino, fue fundamental en la época dorada de Vélez y también ha dejado una marca como entrenador del club y en selecciones internacionales.</p>
-      <div class="palmares">
-        <h4>Palmarés</h4>
-        <ul>
-          <li>6 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</li>
-          <li>1 Supercopa Sudamericana</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/Ricardo_Gareca" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="maradona" class="idol-detail">
-      <h3>José Luis Chilavert</h3>
-      <p>José Luis Chilavert fue uno de los mejores arqueros en la historia de Vélez, conocido por su gran capacidad de liderazgo y sus goles de tiro libre.</p>
-      <div class="palmares">
-        <h4>Palmarés</h4>
-        <ul>
-          <li>7 títulos locales</li>
-          <li>1 Copa Libertadores (1994)</li>
-          <li>1 Copa Intercontinental (1994)</li>
-          <li>3 Copas Sudamericanas</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="chilavert" class="idol-detail">
-      <h3>Hugo Maradona</h3>
-      <p>Hugo Mar
+          <li
