@@ -11,22 +11,23 @@
 
     body {
       margin: 0;
+      background-color: #f0f4fc;
       font-family: Arial, sans-serif;
-      background-color: white;
     }
 
     header {
       background-color: #0047ab;
       color: white;
       padding: 15px 20px;
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: bold;
       display: flex;
       align-items: center;
       gap: 20px;
     }
 
     .menu-button {
-      font-size: 24px;
+      font-size: 28px;
       background: white;
       border: none;
       color: #0047ab;
@@ -65,14 +66,14 @@
       padding: 20px;
       max-width: 800px;
       margin: auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 30px;
     }
 
-    h2 {
+    h2, h3 {
       color: #0047ab;
-    }
-
-    h3 {
-      color: #003b8b;
     }
 
     p {
@@ -83,11 +84,21 @@
     ul {
       padding-left: 20px;
     }
+
+    .stats, .phases {
+      background-color: #e1e8f8;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .stats h4, .phases h4 {
+      margin-top: 0;
+      color: #003b8b;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Menú lateral -->
   <div id="sideMenu" class="side-menu">
     <a href="index.html" onclick="closeMenu()">Inicio</a>
     <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
@@ -98,7 +109,6 @@
     <a href="calendario.html" onclick="closeMenu()">Calendario</a>
   </div>
 
-  <!-- Encabezado con botón -->
   <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
     Vélez Sarsfield - Libertadores
@@ -107,14 +117,13 @@
   <main>
     <h2>Vélez en la Copa Libertadores</h2>
     <p>
-      Vélez Sarsfield ha tenido una participación destacada en la Copa Libertadores, el torneo de clubes más prestigioso de América del Sur. Su consagración más recordada fue en el año 1994, cuando conquistó el título por primera vez en su historia.
+      Vélez Sarsfield ha tenido una destacada trayectoria en la Copa Libertadores, el torneo de clubes más prestigioso de América del Sur. Su consagración más recordada fue en el año 1994, cuando conquistó el título por primera vez en su historia.
     </p>
 
     <h3>Campeón de América - 1994</h3>
     <p>
       En 1994, Vélez tuvo una campaña histórica bajo la dirección técnica de Carlos Bianchi. En la final enfrentó a São Paulo FC, campeón defensor, y tras una serie muy disputada se consagró campeón por penales en el estadio Morumbí.
     </p>
-
     <ul>
       <li>Partido de ida (Liniers): Vélez 1 - 0 São Paulo</li>
       <li>Partido de vuelta (Morumbí): São Paulo 1 - 0 Vélez</li>
@@ -122,33 +131,45 @@
     </ul>
 
     <h3>Participaciones destacadas</h3>
-    <p>
-      Además del título, Vélez alcanzó varias veces instancias decisivas del certamen continental:
-    </p>
+    <p>Además del título, Vélez llegó a varias instancias importantes:</p>
     <ul>
-      <li><strong>1980 - Semifinales:</strong> En su primera gran campaña internacional, Vélez llegó a semifinales enfrentando a Nacional de Uruguay y Olimpia de Paraguay en un grupo semifinal. Quedó eliminado tras una dura serie.</li>
-
-      <li><strong>1995 - Semifinales:</strong> Como campeón vigente, llegó nuevamente a semifinales. Tras vencer a River Plate en cuartos, fue eliminado por Atlético Nacional de Medellín en una serie muy cerrada que terminó en penales.</li>
-
-      <li><strong>2005 - Semifinales:</strong> Con Ricardo Gareca como DT, Vélez armó un equipo muy competitivo. Se enfrentó a Boca Juniors en cuartos y cayó en semifinales ante el poderoso Club Atlético Paranaense de Brasil.</li>
-
-      <li><strong>2011 - Semifinales:</strong> Uno de los equipos más recordados por su juego ofensivo. Eliminó a LDU y a Libertad, pero fue eliminado en semifinales por Peñarol, por la regla del gol de visitante tras un global 2-2.</li>
+      <li><strong>1980:</strong> Semifinalista, eliminado por Internacional de Porto Alegre</li>
+      <li><strong>1995:</strong> Semifinalista, eliminado por Grêmio en una serie ajustada</li>
+      <li><strong>2005:</strong> Semifinalista, cayó ante Atlético Paranaense</li>
+      <li><strong>2011:</strong> Semifinalista, eliminado por Peñarol con un global de 1-1 (gol de visitante)</li>
+      <li>En varias ocasiones alcanzó cuartos y octavos de final</li>
     </ul>
 
-    <p>
-      Además de esas ediciones, Vélez tuvo múltiples participaciones en la Libertadores, siendo un animador constante del torneo en los años 90, 2000 y 2010 gracias a sus buenos desempeños en el fútbol argentino.
-    </p>
+    <div class="phases">
+      <h4>Resumen por Fase Alcanzada</h4>
+      <ul>
+        <li>Fase de grupos: 15 veces</li>
+        <li>Octavos de final: 9 veces</li>
+        <li>Cuartos de final: 7 veces</li>
+        <li>Semifinales: 4 veces</li>
+        <li>Final: 1 vez</li>
+        <li>Campeón: 1 vez (1994)</li>
+      </ul>
+    </div>
+
+    <div class="stats">
+      <h4>Estadísticas Históricas</h4>
+      <ul>
+        <li>Partidos jugados: 140</li>
+        <li>Victorias: 66</li>
+        <li>Empates: 35</li>
+        <li>Derrotas: 39</li>
+        <li>Goles a favor: 198</li>
+        <li>Goles en contra: 147</li>
+        <li>Diferencia de gol: +51</li>
+      </ul>
+    </div>
   </main>
 
-  <!-- Script para abrir/cerrar menú -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      if (menu.style.width === "250px") {
-        closeMenu();
-      } else {
-        menu.style.width = "250px";
-      }
+      menu.style.width = (menu.style.width === "250px") ? "0" : "250px";
     }
 
     function closeMenu() {
@@ -158,7 +179,6 @@
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("sideMenu");
       const button = document.querySelector(".menu-button");
-
       const clickedInsideMenu = menu.contains(event.target);
       const clickedMenuButton = button.contains(event.target);
 
@@ -167,6 +187,5 @@
       }
     });
   </script>
-
 </body>
 </html>
