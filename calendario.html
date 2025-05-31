@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendario de Partidos - Vélez Sarsfield</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 10px 20px;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-button {
+      font-size: 28px;
+      margin-left: 0;
+      background: white;
+      border: none;
+      color: #0047ab;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #0047ab;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0047ab;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #0047ab;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f9ff;
+    }
+
+    .local {
+      color: #0047ab;
+      font-weight: bold;
+    }
+
+    .visitante {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="sideMenu" class="side-menu">
+    <a href="index.html" onclick="closeMenu()">Inicio</a>
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
+  </div>
+
+  <header>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    Vélez Sarsfield - Calendario de Partidos
+  </header>
+
+  <main>
+    <h2>Próximos Partidos de Vélez Sarsfield</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Torneo</th>
+          <th>Rival</th>
+          <th>Local/Visitante</th>
+          <th>Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10/06/2025</td>
+          <td>Primera División - Clausura</td>
+          <td>Racing Club</td>
+          <td class="local">Local</td>
+          <td>20:00</td>
+        </tr>
+        <tr>
+          <td>15/06/2025</td>
+          <td>Primera División - Clausura</td>
+          <td>Independiente</td>
+          <td class="visitante">Visitante</td>
+          <td>18:30</td>
+        </tr>
+        <tr>
+          <td>22/06/2025</td>
+          <td>Primera División - Clausura</td>
+          <td>San Lorenzo</td>
+          <td class="local">Local</td>
+          <td>19:15</td>
+        </tr>
+        <tr>
+          <td>29/06/2025</td>
+          <td>Primera División - Clausura</td>
+          <td>River Plate</td>
+          <td class="visitante">Visitante</td>
+          <td>21:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.width === "250px") {
+        closeMenu();
+      } else {
+        menu.style.width = "250px";
+      }
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
