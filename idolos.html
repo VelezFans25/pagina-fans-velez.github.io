@@ -27,64 +27,51 @@
         transparent 2px,
         transparent 20px
       );
+      display: flex;
+      min-height: 100vh;
     }
 
-    /* --- Menú hamburguesa --- */
-    .menu-button {
-      font-size: 30px;
-      background: none;
-      border: none;
-      color: #0047ab;
-      cursor: pointer;
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 1100;
-    }
-
-    .side-menu {
-      height: 100%;
-      width: 0;
+    /* Menú lateral fijo */
+    nav.side-menu {
+      background-color: #003b8b;
+      width: 220px;
+      padding-top: 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #003b8b;
-      overflow-x: hidden;
-      transition: width 0.3s ease;
-      padding-top: 60px;
-      z-index: 1050;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     }
 
-    .side-menu.open {
-      width: 250px;
-    }
-
-    .side-menu a {
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 18px;
+    nav.side-menu a {
       color: white;
-      display: block;
-      transition: background-color 0.2s;
+      text-decoration: none;
+      padding: 15px 25px;
+      font-weight: bold;
+      font-size: 18px;
+      border-left: 5px solid transparent;
+      transition: background-color 0.3s, border-left-color 0.3s;
     }
 
-    .side-menu a:hover {
+    nav.side-menu a:hover {
       background-color: #0047ab;
+      border-left-color: #ffffff;
     }
 
-    /* Contenido principal con margen para no quedar tapado por menú */
+    /* Contenido principal */
     main {
+      margin-left: 220px;
+      padding: 30px 20px;
       max-width: 900px;
-      margin: 30px auto 60px auto;
-      padding: 0 15px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: margin-left 0.3s ease;
-    }
-
-    main.menu-open {
-      margin-left: 270px;
+      width: 100%;
+      min-height: 100vh;
     }
 
     header {
@@ -94,43 +81,22 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      position: relative;
-    }
-
-    nav {
-      background-color: #003b8b;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-      margin-top: 15px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
+      margin-bottom: 20px;
+      border-radius: 10px 10px 0 0;
     }
 
     h2 {
       color: #0047ab;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 0;
     }
 
-    /* Galería sin fotos, solo lista de nombres */
     .idols-gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      padding: 20px 10px;
+      padding: 10px 0 30px 0;
     }
 
     .idol-card {
@@ -145,6 +111,9 @@
       transition: border-color 0.3s, background-color 0.3s;
       text-align: center;
       user-select: none;
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-decoration: none;
     }
 
     .idol-card:hover {
@@ -152,7 +121,6 @@
       background-color: #e1e8f8;
     }
 
-    /* Sección detalles ídolos */
     section.idol-detail {
       margin-top: 50px;
       padding: 20px;
@@ -171,7 +139,6 @@
       margin-bottom: 20px;
     }
 
-    /* Palmarés organizado */
     .palmares {
       background-color: #0047ab;
       color: white;
@@ -211,7 +178,6 @@
       top: 0;
     }
 
-    /* Link extra info */
     .more-info {
       display: block;
       text-align: center;
@@ -229,47 +195,35 @@
       scroll-behavior: smooth;
     }
 
-    @media (max-width: 600px) {
-      .idols-gallery {
-        gap: 15px;
+    /* Responsive: en móviles ocultamos el menú lateral y el main usa todo el ancho */
+    @media (max-width: 768px) {
+      nav.side-menu {
+        display: none;
       }
-
-      .idol-card {
-        width: 90%;
-      }
-
-      .palmares {
-        max-width: 100%;
-      }
-
-      main.menu-open {
+      main {
         margin-left: 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
       }
-
-      .menu-button {
-        position: fixed;
-        left: 15px;
+      header {
+        border-radius: 0;
       }
     }
   </style>
 </head>
 <body>
-
-  <button class="menu-button" aria-label="Abrir menú" id="menuToggle">☰</button>
-
-  <nav id="sideMenu" class="side-menu" aria-hidden="true">
-    <a href="index.html" onclick="closeMenu()">Inicio</a>
-    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
-    <a href="historia.html" onclick="closeMenu()">Historia</a>
-    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
-    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+  <nav class="side-menu" aria-label="Menú principal">
+    <a href="index.html">Inicio</a>
+    <a href="libertadores.html">Libertadores</a>
+    <a href="historia.html">Historia</a>
+    <a href="torneos.html">Torneos Locales</a>
+    <a href="idolos.html">Ídolos</a>
   </nav>
 
-  <header>
-    Vélez Sarsfield - Ídolos
-  </header>
+  <main>
+    <header>Vélez Sarsfield - Ídolos</header>
 
-  <main id="mainContent">
     <h2>Galería de Ídolos de Vélez Sarsfield</h2>
 
     <div class="idols-gallery">
@@ -281,7 +235,6 @@
       <a href="#montes" class="idol-card">Diego Montes</a>
     </div>
 
-    <!-- Detalles ídolos -->
     <section id="bianchi" class="idol-detail">
       <h3>Carlos Bianchi</h3>
       <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales, dejando una huella imborrable en el Fortín.</p>
@@ -291,4 +244,31 @@
           <li>11 títulos locales con Vélez</li>
           <li>1 Copa Libertadores (1994)</li>
           <li>1 Copa Intercontinental (1994)</li>
-          <li
+          <li>3 Copas Sudamericanas</li>
+        </ul>
+      </div>
+      <a href="https://es.wikipedia.org/wiki/Carlos_Bianchi" target="_blank" class="more-info" rel="noopener noreferrer">Ver más sobre su carrera</a>
+    </section>
+
+    <section id="sanchez" class="idol-detail">
+      <h3>Walter Sánchez</h3>
+      <p>Walter Sánchez fue un jugador clave en la defensa de Vélez durante los años 80 y 90, destacándose por su entrega y liderazgo dentro del campo.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>5 títulos locales</li>
+          <li>1 Copa Libertadores (1994)</li>
+          <li>1 Copa Intercontinental (1994)</li>
+        </ul>
+      </div>
+      <a href="https://es.wikipedia.org/wiki/Walter_Sánchez" target="_blank" class="more-info" rel="noopener noreferrer">Ver más sobre su carrera</a>
+    </section>
+
+    <section id="rueda" class="idol-detail">
+      <h3>Óscar Rueda</h3>
+      <p>Óscar Rueda es recordado por su habilidad técnica y sus aportes en el mediocampo durante la época dorada de Vélez Sarsfield en los 90.</p>
+      <div class="palmares">
+        <h4>Palmarés</h4>
+        <ul>
+          <li>7 títulos locales</li>
+          <li>1 Copa Libertadores (1994)</
