@@ -11,36 +11,54 @@
 
     body {
       margin: 0;
-      background-color: white;
       font-family: Arial, sans-serif;
+      background-color: white;
     }
 
     header {
       background-color: #0047ab;
       color: white;
-      padding: 10px 20px;
-      text-align: center;
+      padding: 15px 20px;
       font-size: 24px;
-    }
-
-    nav {
-      background-color: #003b8b;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
+      align-items: center;
+      gap: 20px;
     }
 
-    nav a {
-      color: white;
+    .menu-button {
+      font-size: 24px;
+      background: white;
+      border: none;
+      color: #0047ab;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
       text-decoration: none;
-      margin: 8px 15px;
-      font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .side-menu a:hover {
+      background-color: #0047ab;
     }
 
     main {
@@ -51,6 +69,10 @@
 
     h2 {
       color: #0047ab;
+    }
+
+    h3 {
+      color: #003b8b;
     }
 
     p {
@@ -64,17 +86,23 @@
   </style>
 </head>
 <body>
-  <header>
-    Vélez Sarsfield
-  </header>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-  </nav>
+  <!-- Menú lateral -->
+  <div id="sideMenu" class="side-menu">
+    <a href="index.html" onclick="closeMenu()">Inicio</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
+  </div>
+
+  <!-- Encabezado con botón -->
+  <header>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    Vélez Sarsfield - Libertadores
+  </header>
 
   <main>
     <h2>Vélez en la Copa Libertadores</h2>
@@ -94,16 +122,51 @@
     </ul>
 
     <h3>Participaciones destacadas</h3>
-    <p>Además del título, Vélez llegó a varias instancias importantes:</p>
+    <p>
+      Además del título, Vélez alcanzó varias veces instancias decisivas del certamen continental:
+    </p>
     <ul>
-      <li>Semifinalista en 1980, 1995, 2005 y 2011</li>
-      <li>Cuartos de final en varias ediciones</li>
-      <li>Presencia constante gracias a sus buenas campañas en torneos locales</li>
+      <li><strong>1980 - Semifinales:</strong> En su primera gran campaña internacional, Vélez llegó a semifinales enfrentando a Nacional de Uruguay y Olimpia de Paraguay en un grupo semifinal. Quedó eliminado tras una dura serie.</li>
+
+      <li><strong>1995 - Semifinales:</strong> Como campeón vigente, llegó nuevamente a semifinales. Tras vencer a River Plate en cuartos, fue eliminado por Atlético Nacional de Medellín en una serie muy cerrada que terminó en penales.</li>
+
+      <li><strong>2005 - Semifinales:</strong> Con Ricardo Gareca como DT, Vélez armó un equipo muy competitivo. Se enfrentó a Boca Juniors en cuartos y cayó en semifinales ante el poderoso Club Atlético Paranaense de Brasil.</li>
+
+      <li><strong>2011 - Semifinales:</strong> Uno de los equipos más recordados por su juego ofensivo. Eliminó a LDU y a Libertad, pero fue eliminado en semifinales por Peñarol, por la regla del gol de visitante tras un global 2-2.</li>
     </ul>
 
     <p>
-      La historia de Vélez en la Libertadores es símbolo de esfuerzo, talento y garra. Hoy sigue siendo un competidor respetado en el ámbito continental.
+      Además de esas ediciones, Vélez tuvo múltiples participaciones en la Libertadores, siendo un animador constante del torneo en los años 90, 2000 y 2010 gracias a sus buenos desempeños en el fútbol argentino.
     </p>
   </main>
+
+  <!-- Script para abrir/cerrar menú -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.width === "250px") {
+        closeMenu();
+      } else {
+        menu.style.width = "250px";
+      }
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+        closeMenu();
+      }
+    });
+  </script>
+
 </body>
 </html>
