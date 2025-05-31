@@ -2,220 +2,201 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vélez Sarsfield - Página Oficial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vélez Fans</title>
   <style>
-    /* Reset */
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f0f4fc;
-      color: #0047ab;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* Menú lateral */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 100vh;
-      background-color: #003b8b;
-      display: flex;
-      flex-direction: column;
-      padding-top: 30px;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-      z-index: 1100;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 15px 20px;
-      font-size: 18px;
-      border-left: 5px solid transparent;
-      transition: background-color 0.3s, border-color 0.3s;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      background-color: #0047ab;
-      border-left-color: #f2b900;
-      outline: none;
-    }
-
-    /* Contenido principal */
-    main {
-      margin-left: 220px;
-      padding: 40px 30px;
-      max-width: 900px;
-      flex-grow: 1;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: white;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
     }
 
     header {
-      font-size: 2.8rem;
+      background-color: #0047ab;
+      color: white;
+      padding: 10px 20px;
+      font-size: 28px;
       font-weight: bold;
-      margin-bottom: 20px;
-      color: #003b8b;
-      text-align: center;
-      user-select: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-button {
+      font-size: 28px;
+      margin-left: 0;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #0047ab;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .external-links {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .external-links a {
-      margin: 0 20px;
-      font-weight: bold;
       color: #0047ab;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.2s;
     }
 
-    .external-links a:hover,
-    .external-links a:focus {
-      text-decoration: underline;
-      color: #002f7a;
-      outline: none;
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 18px;
     }
 
-    .banner {
-      display: block;
-      margin: 60px auto 0 auto;
-      max-width: 600px;
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .gallery-item {
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .gallery-item img {
       width: 100%;
+      height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 71, 171, 0.3);
-      user-select: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* Responsive */
-    @media (max-width: 850px) {
-      nav {
-        position: fixed;
-        width: 200px;
-        height: 100vh;
-        padding-top: 15px;
-      }
-      main {
-        margin-left: 200px;
-        padding: 25px 20px;
-      }
+    .gallery-item h3 {
+      font-size: 18px;
+      color: #0047ab;
+      margin: 10px 0 5px;
     }
 
     @media (max-width: 600px) {
-      nav {
-        position: fixed;
-        top: 0;
-        left: -220px;
-        width: 220px;
-        height: 100vh;
-        padding-top: 30px;
-        transition: left 0.3s ease;
-        box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+      .gallery-item {
+        width: 90%;
       }
-      nav.open {
-        left: 0;
-      }
-      main {
-        margin-left: 0;
-        padding: 20px 15px;
-        transition: filter 0.3s ease;
-      }
-      main.blur {
-        filter: blur(3px);
-      }
-      /* Botón hamburguesa */
-      .menu-button {
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        font-size: 28px;
-        background: none;
-        border: none;
-        color: #0047ab;
-        cursor: pointer;
-        z-index: 1200;
-        user-select: none;
-      }
+    }
+
+    .custom-photo {
+      text-align: center;
+      margin: 60px auto;
+    }
+
+    .custom-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
+  <div id="sideMenu" class="side-menu">
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+  </div>
 
-  <!-- Menú hamburguesa para móvil -->
-  <button aria-label="Abrir menú" class="menu-button" id="menuToggle" aria-expanded="false">☰</button>
+  <header>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    Vélez Sarsfield
+  </header>
 
-  <!-- Menú lateral -->
-  <nav id="sideMenu" aria-label="Menú principal">
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-    <a href="calendario.html">Calendario</a>
-  </nav>
+  <main id="mainContent">
+    <h2>Bienvenidos a Vélez Fans</h2>
+    <p>
+      Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
+    </p>
 
-  <!-- Contenido principal -->
-  <main id="mainContent" tabindex="-1">
-    <header>Vélez Sarsfield - Orgullo de Liniers</header>
+    <div class="gallery">
+      <div class="gallery-item">
+        <h3>Estadio José Amalfitani</h3>
+        <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">
+          <img src="estadio.jpg" alt="Estadio José Amalfitani" />
+        </a>
+      </div>
 
-    <h2>¡El Fortín de Liniers, orgullo nacional!</h2>
+      <div class="gallery-item">
+        <h3>Campeón Libertadores 1994</h3>
+        <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
+        </a>
+      </div>
 
-    <div class="external-links">
-      <a href="https://www.google.com/search?q=libertadores+1994+velez" target="_blank" rel="noopener noreferrer">🏆 Libertadores 94</a>
-      <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield" target="_blank" rel="noopener noreferrer">🏳️‍⚧️ Bandera</a>
-      <a href="https://www.google.com/search?q=estadio+velez+sarsfield" target="_blank" rel="noopener noreferrer">🏟️ Estadio</a>
+      <div class="gallery-item">
+        <h3>Bandera de Vélez</h3>
+        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+        </a>
+      </div>
     </div>
 
-    <img
-      class="banner"
-      src="https://pbs.twimg.com/media/FwOnfBIXwAAYZ4r?format=jpg&name=large"
-      alt="Vélez Sarsfield en acción"
-      draggable="false"
-    />
+    <div class="custom-photo">
+      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
+    </div>
   </main>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sideMenu = document.getElementById('sideMenu');
-    const mainContent = document.getElementById('mainContent');
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.width === "250px") {
+        closeMenu();
+      } else {
+        menu.style.width = "250px";
+      }
+    }
 
-    menuToggle.addEventListener('click', () => {
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-      menuToggle.setAttribute('aria-expanded', !expanded);
-      sideMenu.classList.toggle('open');
-      mainContent.classList.toggle('blur');
-    });
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
 
-    // Close menu when clicking a link (mobile)
-    sideMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (sideMenu.classList.contains('open')) {
-          sideMenu.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', false);
-          mainContent.classList.remove('blur');
-        }
-      });
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+        closeMenu();
+      }
     });
   </script>
-
 </body>
 </html>
