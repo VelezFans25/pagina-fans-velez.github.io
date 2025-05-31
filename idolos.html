@@ -29,69 +29,68 @@
       );
     }
 
-    header {
-      background-color: #0047ab;
-      color: white;
-      padding: 15px 20px;
-      font-size: 28px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1100;
-    }
-
-    .menu-button {
-      font-size: 28px;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-    }
-
     /* Menú lateral */
     .side-menu {
       height: 100%;
       width: 0;
       position: fixed;
       top: 0;
-      left: 0;
+      left: 0; /* Desde izquierda */
       background-color: #003b8b;
       overflow-x: hidden;
       transition: width 0.3s ease;
       padding-top: 60px;
-      z-index: 1050;
+      z-index: 1000;
     }
 
     .side-menu a {
-      padding: 12px 30px;
+      padding: 10px 30px;
       text-decoration: none;
       font-size: 18px;
       color: white;
       display: block;
-      transition: background-color 0.2s;
+      transition: 0.2s;
     }
 
     .side-menu a:hover {
       background-color: #0047ab;
     }
 
+    /* Botón hamburguesa */
+    .menu-button {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #0047ab;
+      cursor: pointer;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1100;
+    }
+
+    /* Header */
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-left: 0; /* No desplazamos */
+    }
+
     nav {
-      display: none; /* ocultamos nav para móviles, porque usamos menú lateral */
+      display: none; /* No usamos nav desktop porque usamos menú lateral */
     }
 
     main {
       max-width: 900px;
-      margin: 30px auto 60px auto;
+      margin: 80px auto 60px auto; /* Margin top para que no tape el botón */
       padding: 0 15px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
     }
 
     h2 {
@@ -202,43 +201,22 @@
       scroll-behavior: smooth;
     }
 
-    /* Para pantallas más grandes mostramos el nav y ocultamos el botón y menú lateral */
-    @media (min-width: 768px) {
-      .menu-button {
-        display: none;
+    @media (max-width: 600px) {
+      .idols-gallery {
+        gap: 15px;
       }
-      .side-menu {
-        display: none;
-      }
-      nav {
-        display: flex;
-        background-color: #003b8b;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 10px 0;
-      }
-      nav a {
-        color: white;
-        text-decoration: none;
-        margin: 8px 15px;
-        font-weight: bold;
-        font-size: 16px;
-      }
-      nav a:hover {
-        text-decoration: underline;
-      }
-    }
 
-    /* Para móviles hacemos que los links de la galería sean ancla sin estilo */
-    @media (max-width: 767px) {
       .idol-card {
         width: 90%;
+      }
+
+      .palmares {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Menú lateral -->
   <div id="sideMenu" class="side-menu">
     <a href="index.html" onclick="closeMenu()">Inicio</a>
@@ -248,18 +226,12 @@
     <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
   </div>
 
+  <!-- Botón menú hamburguesa -->
+  <button class="menu-button" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+
   <header>
     Vélez Sarsfield - Ídolos
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
   </header>
-
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-  </nav>
 
   <main>
     <h2>Galería de Ídolos de Vélez Sarsfield</h2>
@@ -268,12 +240,11 @@
       <a href="#bianchi" class="idol-card">Carlos Bianchi</a>
       <a href="#sanchez" class="idol-card">Walter Sánchez</a>
       <a href="#rueda" class="idol-card">Óscar Rueda</a>
-      <a href="#perazzo" class="idol-card">José Perazzo</a>
-      <a href="#gonzalez" class="idol-card">Ricardo González</a>
-      <a href="#martinez" class="idol-card">Diego Martínez</a>
+      <a href="#merlo" class="idol-card">Ricardo Gareca</a>
+      <a href="#maradona" class="idol-card">José Luis Chilavert</a>
+      <a href="#chilavert" class="idol-card">Hugo Maradona</a>
     </div>
 
-    <!-- Detalles ídolos -->
     <section id="bianchi" class="idol-detail">
       <h3>Carlos Bianchi</h3>
       <p>Carlos Bianchi es uno de los entrenadores más exitosos y reconocidos en la historia de Vélez Sarsfield. Dirigió al club en la década de los 90 y conquistó numerosos títulos locales e internacionales, dejando una huella imborrable en el Fortín.</p>
@@ -318,40 +289,35 @@
       <a href="https://es.wikipedia.org/wiki/%C3%93scar_Rueda" target="_blank" class="more-info">Ver más sobre su carrera</a>
     </section>
 
-    <section id="perazzo" class="idol-detail">
-      <h3>José Perazzo</h3>
-      <p>José Perazzo fue un mediocampista emblemático para Vélez en los años 70, reconocido por su visión de juego y gran entrega.</p>
-      <div class="palmares">
-        <h4>Palmarés</h4>
-        <ul>
-          <li>3 títulos locales</li>
-          <li>Participación destacada en torneos nacionales</li>
-        </ul>
-      </div>
-      <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_Perazzo" target="_blank" class="more-info">Ver más sobre su carrera</a>
-    </section>
-
-    <section id="gonzalez" class="idol-detail">
-      <h3>Ricardo González</h3>
-      <p>Ricardo González fue un defensor sólido y líder en la defensa de Vélez durante finales de los 80 y principios de los 90.</p>
+    <section id="merlo" class="idol-detail">
+      <h3>Ricardo Gareca</h3>
+      <p>Ricardo Gareca, exjugador y entrenador argentino, fue fundamental en la época dorada de Vélez y también ha dejado una marca como entrenador del club y en selecciones internacionales.</p>
       <div class="palmares">
         <h4>Palmarés</h4>
         <ul>
           <li>6 títulos locales</li>
           <li>1 Copa Libertadores (1994)</li>
+          <li>1 Supercopa Sudamericana</li>
         </ul>
       </div>
-      <a href="https://es.wikipedia.org/wiki/Ricardo_Gonz%C3%A1lez_(futbolista)" target="_blank" class="more-info">Ver más sobre su carrera</a>
+      <a href="https://es.wikipedia.org/wiki/Ricardo_Gareca" target="_blank" class="more-info">Ver más sobre su carrera</a>
     </section>
 
-    <section id="martinez" class="idol-detail">
-      <h3>Diego Martínez</h3>
-      <p>Diego Martínez fue un talentoso delantero que brilló en Vélez durante los años 90, aportando goles y garra.</p>
+    <section id="maradona" class="idol-detail">
+      <h3>José Luis Chilavert</h3>
+      <p>José Luis Chilavert fue uno de los mejores arqueros en la historia de Vélez, conocido por su gran capacidad de liderazgo y sus goles de tiro libre.</p>
       <div class="palmares">
         <h4>Palmarés</h4>
         <ul>
-          <li>4 títulos locales</li>
+          <li>7 títulos locales</li>
+          <li>1 Copa Libertadores (1994)</li>
           <li>1 Copa Intercontinental (1994)</li>
+          <li>3 Copas Sudamericanas</li>
         </ul>
       </div>
-      <a href="https://es.wikipedia.org/wiki/Diego_Mart%C3%ADnez_(futbolista)" target
+      <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" target="_blank" class="more-info">Ver más sobre su carrera</a>
+    </section>
+
+    <section id="chilavert" class="idol-detail">
+      <h3>Hugo Maradona</h3>
+      <p>Hugo Mar
