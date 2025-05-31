@@ -33,29 +33,47 @@
       background-color: #0047ab;
       color: white;
       padding: 15px 20px;
-      text-align: center;
       font-size: 28px;
       font-weight: bold;
-    }
-
-    nav {
-      background-color: #003b8b;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
+      align-items: center;
+      gap: 20px;
     }
 
-    nav a {
-      color: white;
+    .menu-button {
+      font-size: 28px;
+      background: white;
+      border: none;
+      color: #0047ab;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
       text-decoration: none;
-      margin: 8px 15px;
-      font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .side-menu a:hover {
+      background-color: #0047ab;
     }
 
     main {
@@ -172,17 +190,20 @@
 </head>
 <body>
 
+  <div id="sideMenu" class="side-menu">
+    <a href="index.html" onclick="closeMenu()">Inicio</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
+  </div>
+
   <header>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
     Vélez Sarsfield - Ídolos
   </header>
-
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-  </nav>
 
   <main>
     <h2>Galería de Ídolos de Vélez Sarsfield</h2>
@@ -271,6 +292,33 @@
     </section>
 
   </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.width === "250px") {
+        closeMenu();
+      } else {
+        menu.style.width = "250px";
+      }
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+        closeMenu();
+      }
+    });
+  </script>
 
 </body>
 </html>
