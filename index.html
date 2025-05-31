@@ -30,7 +30,7 @@
 
     .menu-button {
       font-size: 28px;
-      margin-right: 20px;
+      margin-left: 0;
       background: none;
       border: none;
       color: white;
@@ -45,7 +45,7 @@
       left: 0;
       background-color: #003b8b;
       overflow-x: hidden;
-      transition: 0.3s;
+      transition: width 0.3s ease;
       padding-top: 60px;
       z-index: 1000;
     }
@@ -186,7 +186,7 @@
     Vélez Sarsfield
   </header>
 
-  <main>
+  <main id="mainContent">
     <h2>Bienvenidos a Vélez Fans</h2>
     <p>
       Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
@@ -215,7 +215,6 @@
       </div>
     </div>
 
-    <!-- CUADRO TROFEOS NACIONALES -->
     <div class="trophies-container">
       <div class="trophies-title">Títulos Nacionales</div>
       <div class="trophies-row">
@@ -246,7 +245,6 @@
       </div>
     </div>
 
-    <!-- CUADRO TROFEOS INTERNACIONALES -->
     <div class="trophies-container" style="background-color: #003b8b;">
       <div class="trophies-title">Títulos Internacionales</div>
       <div class="trophies-row">
@@ -265,7 +263,7 @@
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
       if (menu.style.width === "250px") {
-        menu.style.width = "0";
+        closeMenu();
       } else {
         menu.style.width = "250px";
       }
@@ -274,6 +272,18 @@
     function closeMenu() {
       document.getElementById("sideMenu").style.width = "0";
     }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+        closeMenu();
+      }
+    });
   </script>
 </body>
 </html>
