@@ -1,243 +1,280 @@
-<!DOCTYPE html>  
-<html lang="es">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
-  <title>Vélez Fans</title>  
-  <style>  
-    * {  
-      box-sizing: border-box;  
-    }  
-  
-    body {  
-      margin: 0;  
-      font-family: Arial, sans-serif;  
-      background-color: white;  
-      background-image:  
-        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),  
-        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);  
-    }  
-  
-    header {  
-      background-color: #0047ab;  
-      color: white;  
-      padding: 10px 20px;  
-      font-size: 28px;  
-      font-weight: bold;  
-      display: flex;  
-      align-items: center;  
-    }  
-  
-    .menu-button {  
-      font-size: 28px;  
-      margin-left: 0;  
-      background: none;  
-      border: none;  
-      color: white;  
-      cursor: pointer;  
-    }  
-  
-    .side-menu {  
-      height: 100%;  
-      width: 0;  
-      position: fixed;  
-      top: 0;  
-      left: 0;  
-      background-color: #003b8b;  
-      overflow-x: hidden;  
-      transition: width 0.3s ease;  
-      padding-top: 60px;  
-      z-index: 1000;  
-    }  
-  
-    .side-menu a {  
-      padding: 10px 30px;  
-      text-decoration: none;  
-      font-size: 18px;  
-      color: white;  
-      display: block;  
-      transition: 0.2s;  
-    }  
-  
-    .side-menu a:hover {  
-      background-color: #0047ab;  
-    }  
-  
-    main {  
-      padding: 20px;  
-      max-width: 1000px;  
-      margin: auto;  
-    }  
-  
-    h2 {  
-      color: #0047ab;  
-    }  
-  
-    p {  
-      line-height: 1.6;  
-      text-align: justify;  
-      font-size: 18px;  
-    }  
-  
-    .gallery {  
-      display: flex;  
-      flex-wrap: wrap;  
-      justify-content: center;  
-      gap: 25px;  
-      margin-top: 20px;  
-    }  
-  
-    .gallery-item {  
-      text-align: center;  
-      max-width: 300px;  
-    }  
-  
-    .gallery-item img {  
-      width: 100%;  
-      height: auto;  
-      border-radius: 10px;  
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);  
-    }  
-  
-    .gallery-item h3 {  
-      font-size: 18px;  
-      color: #0047ab;  
-      margin: 10px 0 5px;  
-    }  
-  
-    @media (max-width: 600px) {  
-      .gallery-item {  
-        width: 90%;  
-      }  
-    }  
-  
-    .custom-photo {  
-      text-align: center;  
-      margin: 60px auto;  
-    }  
-  
-    .custom-photo img {  
-      max-width: 100%;  
-      height: auto;  
-      border-radius: 12px;  
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);  
-    }  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vélez Fans</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    /* NUEVO: Contenedor y estilo para el título animado */
-    #animatedTitleContainer {
-      text-align: center;
-      margin: 20px 0;
-      font-size: 42px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 10px 20px;
+      font-size: 28px;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-button {
+      font-size: 28px;
+      margin-right: 15px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003b8b;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #0047ab;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1#animated-title {
       color: #0047ab;
-      min-height: 50px; /* Para evitar salto al cambiar texto */
-      transition: opacity 0.5s ease;
+      font-size: 48px;
+      margin-bottom: 10px;
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+      font-weight: 900;
       user-select: none;
     }
 
-    /* NUEVO: Contenedor para íconos sociales */
-    #socialIcons {
-      margin: 40px auto 20px;
+    h2 {
+      color: #0047ab;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 18px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .gallery-item {
       text-align: center;
+      max-width: 300px;
     }
-    #socialIcons a {
-      display: inline-block;
-      margin: 0 15px;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-      text-decoration: none;
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-    #socialIcons a img {
+
+    .gallery-item h3 {
+      font-size: 18px;
+      color: #0047ab;
+      margin: 10px 0 5px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-item {
+        width: 90%;
+      }
+    }
+
+    .custom-photo {
+      text-align: center;
+      margin: 60px auto;
+    }
+
+    .custom-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Redes sociales abajo */
+    .social-footer {
+      max-width: 1000px;
+      margin: 30px auto 40px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .social-icon {
       width: 40px;
       height: 40px;
-      vertical-align: middle;
-    }
-    #socialIcons a:active {
-      transform: scale(0.85);
+      cursor: pointer;
+      transition: transform 0.15s ease;
     }
 
-  </style>  
-</head>  
-<body>  
-  <div id="sideMenu" class="side-menu">  
-    <a href="historia.html" onclick="closeMenu()">Historia</a>  
-    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>  
-    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>  
-    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>  
-    <a href="plantel.html" onclick="closeMenu()">Plantel</a>  
-    <a href="calendario.html" onclick="closeMenu()">Calendario</a>  
-    <a href="foro.html" onclick="closeMenu()">Foro</a>  
-  </div>  
-  
-  <header>  
-    <button class="menu-button" onclick="toggleMenu()">☰</button>  
-    Vélez Sarsfield  
-  </header>  
-  
+    .social-icon:active {
+      transform: scale(0.8);
+    }
+  </style>
+</head>
+<body>
+  <div id="sideMenu" class="side-menu">
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
+    <a href="foro.html" onclick="closeMenu()">Foro</a>
+  </div>
+
+  <header>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <h1 id="animated-title">Vélez</h1>
+  </header>
+
   <main id="mainContent">
+    <h2>Bienvenidos a Vélez Fans</h2>
+    <p>
+      Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
+    </p>
 
-    <!-- Título animado -->
-    <div id="animatedTitleContainer">Vélez</div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <h3>Estadio José Amalfitani</h3>
+        <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">
+          <img src="estadio.jpg" alt="Estadio José Amalfitani" />
+        </a>
+      </div>
 
-    <h2>Bienvenidos a Vélez Fans</h2>  
-    <p>  
-      Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.  
-    </p>  
-  
-    <div class="gallery">  
-      <div class="gallery-item">  
-        <h3>Estadio José Amalfitani</h3>  
-        <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">  
-          <img src="estadio.jpg" alt="Estadio José Amalfitani" />  
-        </a>  
-      </div>  
-  
-      <div class="gallery-item">  
-        <h3>Campeón Libertadores 1994</h3>  
-        <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">  
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />  
-        </a>  
-      </div>  
-  
-      <div class="gallery-item">  
-        <h3>Bandera de Vélez</h3>  
-        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">  
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />  
-        </a>  
-      </div>  
-    </div>  
-  
-    <div class="custom-photo">  
-      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />  
-    </div>  
+      <div class="gallery-item">
+        <h3>Campeón Libertadores 1994</h3>
+        <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
+        </a>
+      </div>
 
-    <!-- Íconos sociales -->
-    <div id="socialIcons">
-      <a href="https://twitter.com/velez" target="_blank" title="X (Twitter) de Vélez" aria-label="X de Vélez">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Icono X" />
+      <div class="gallery-item">
+        <h3>Bandera de Vélez</h3>
+        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+        </a>
+      </div>
+    </div>
+
+    <div class="custom-photo">
+      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="social-footer">
+      <a href="https://twitter.com/velezsarsfield" target="_blank" rel="noopener">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X (Twitter) Vélez" class="social-icon" />
       </a>
-      <a href="https://www.instagram.com/clubvelez/" target="_blank" title="Instagram de Vélez" aria-label="Instagram de Vélez">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Icono Instagram" />
+      <a href="https://www.instagram.com/velezsarsfield/" target="_blank" rel="noopener">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram Vélez" class="social-icon" />
       </a>
-      <a href="https://www.facebook.com/ClubVelezSarsfieldOficial" target="_blank" title="Facebook de Vélez" aria-label="Facebook de Vélez">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Icono Facebook" />
+      <a href="https://www.facebook.com/velezsarsfield" target="_blank" rel="noopener">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Vélez" class="social-icon" />
       </a>
-    </div>  
+    </div>
+  </main>
 
-  </main>  
-  
-  <script>  
-    function toggleMenu() {  
-      const menu = document.getElementById("sideMenu");  
-      if (menu.style.width === "250px") {  
-        closeMenu();  
-      } else {  
-        menu.style.width = "250px";  
-      }  
-    }  
-  
-    function closeMenu() {  
-      document.getElementById("sideMenu").style.width = "0";  
-    }  
-  
-    document.addEventListener("click", function
+  <script>
+    const sideMenu = document.getElementById('sideMenu');
+    const menuButton = document.querySelector('.menu-button');
+    const animatedTitle = document.getElementById('animated-title');
+
+    // Menú hamburguesa
+    function toggleMenu() {
+      if (sideMenu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    function openMenu() {
+      sideMenu.style.width = '250px';
+      sideMenu.classList.add('open');
+    }
+
+    function closeMenu() {
+      sideMenu.style.width = '0';
+      sideMenu.classList.remove('open');
+    }
+
+    // Cierra menú si haces clic fuera
+    document.addEventListener('click', (event) => {
+      const clickedInsideMenu = sideMenu.contains(event.target);
+      const clickedMenuButton = menuButton.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedMenuButton && sideMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+
+    // Animación título Vélez + mensajes
+    const messages = [
+      "Vélez",
+      "El primero en ser un gran club",
+      "Vélez"
+    ];
+
+    let index = 0;
+
+    function showNextMessage() {
+      animatedTitle.textContent = messages[index];
+      let delay;
+
+      if (index === 0) delay = 5000; // 5 segundos vélez
+      else if (index === 1) delay = 10000; // 10 segundos mensaje
+      else delay = 5000; // vuelve a vélez 5 segundos
+
+      index = (index + 1) % messages.length;
+      setTimeout(showNextMessage, delay);
+    }
+
+    showNextMessage();
+
+  </script>
+</body>
+</html>
