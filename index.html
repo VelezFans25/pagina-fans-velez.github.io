@@ -16,41 +16,26 @@
       background-image:
         repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
         repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
       background-color: #0047ab;
       color: white;
       padding: 10px 20px;
+      font-size: 28px;
       font-weight: bold;
       display: flex;
       align-items: center;
       height: 70px;
+      gap: 15px;
     }
 
     .menu-button {
       font-size: 28px;
-      margin-left: 0;
       background: none;
       border: none;
       color: white;
       cursor: pointer;
-      user-select: none;
-    }
-
-    h1#animated-title {
-      color: white !important;
-      font-size: 48px;
-      margin: 0 0 0 15px;
-      height: 60px;
-      overflow: hidden;
-      position: relative;
-      font-weight: 900;
-      user-select: none;
-      flex-shrink: 0;
     }
 
     .side-menu {
@@ -83,7 +68,6 @@
       padding: 20px;
       max-width: 1000px;
       margin: auto;
-      flex-grow: 1;
     }
 
     h2 {
@@ -122,12 +106,6 @@
       margin: 10px 0 5px;
     }
 
-    @media (max-width: 600px) {
-      .gallery-item {
-        width: 90%;
-      }
-    }
-
     .custom-photo {
       text-align: center;
       margin: 60px auto;
@@ -140,48 +118,79 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
-    /* Animación texto header */
-    #animated-text {
-      color: white;
-      font-size: 20px;
-      font-weight: 600;
-      margin-left: 15px;
-      height: 28px;
+    .title-container {
+      position: relative;
+      height: 60px;
+      width: 300px;
       overflow: hidden;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    /* Íconos sociales abajo */
-    footer {
-      background-color: #0047ab;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 30px;
-    }
-
-    footer a {
+      font-weight: 900;
+      font-size: 48px;
       color: white;
-      font-size: 28px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
+    }
+
+    .text-block {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
+      height: 60px;
+    }
+
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .text-block.two-lines {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .text-block.two-lines span {
+      display: block;
+    }
+
+    .redes {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .redes a img {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
       transition: transform 0.2s ease;
-      user-select: none;
     }
 
-    footer a:active {
-      transform: scale(0.8);
+    .redes a img:hover {
+      transform: scale(0.9);
     }
 
-    footer a:hover {
-      color: #a3c2f7;
-    }
+    @media (max-width: 600px) {
+      .gallery-item {
+        width: 90%;
+      }
 
+      .title-container {
+        width: 100%;
+        font-size: 32px;
+      }
+
+      .text-block.two-lines {
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -197,8 +206,13 @@
 
   <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
-    <h1 id="animated-title">Vélez</h1>
-    <div id="animated-text"></div>
+    <div class="title-container">
+      <div class="text-block active" id="title-velez">Vélez</div>
+      <div class="text-block two-lines" id="title-elprimero">
+        <span>El Primero</span>
+        <span>en ser un Gran Club</span>
+      </div>
+    </div>
   </header>
 
   <main id="mainContent">
@@ -233,22 +247,24 @@
     <div class="custom-photo">
       <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
     </div>
-  </main>
 
-  <footer>
-    <a href="https://twitter.com/CAVSoficial" target="_blank" title="Twitter Vélez" aria-label="Twitter Vélez">🐦</a>
-    <a href="https://www.instagram.com/cavsoficial/" target="_blank" title="Instagram Vélez" aria-label="Instagram Vélez">📸</a>
-    <a href="https://www.facebook.com/cavsoficial" target="_blank" title="Facebook Vélez" aria-label="Facebook Vélez">📘</a>
-  </footer>
+    <div class="redes">
+      <a href="https://x.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
+      </a>
+      <a href="https://instagram.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
+      </a>
+      <a href="https://facebook.com/velezsarsfield" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
+      </a>
+    </div>
+  </main>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      if (menu.style.width === "250px") {
-        closeMenu();
-      } else {
-        menu.style.width = "250px";
-      }
+      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
     }
 
     function closeMenu() {
@@ -258,33 +274,27 @@
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("sideMenu");
       const button = document.querySelector(".menu-button");
-
-      const clickedInsideMenu = menu.contains(event.target);
-      const clickedMenuButton = button.contains(event.target);
-
-      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
         closeMenu();
       }
     });
 
-    // Animación del texto en el header
-    const texts = [
-      "El primero en ser un gran club",
-      "Vélez"
-    ];
+    const velezBlock = document.getElementById("title-velez");
+    const primeroBlock = document.getElementById("title-elprimero");
+    let showingVelez = true;
 
-    const animatedText = document.getElementById("animated-text");
-
-    let index = 0;
-    function showText() {
-      animatedText.textContent = texts[index];
-      index = (index + 1) % texts.length;
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        primeroBlock.classList.add("active");
+      } else {
+        primeroBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
     }
 
-    showText(); // muestra inicialmente
-
-    setInterval(showText, 10000); // cambia cada 10 segundos
-
+    setInterval(toggleTitle, 5000);
   </script>
 </body>
 </html>
