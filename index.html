@@ -177,17 +177,6 @@
       transform: scale(0.9);
     }
 
-    .logo-velez {
-      height: 50px;
-      margin-left: auto;
-      margin-right: 10px;
-      transition: transform 0.2s ease;
-    }
-
-    .logo-velez:hover {
-      transform: scale(0.9);
-    }
-
     @media (max-width: 600px) {
       .gallery-item {
         width: 90%;
@@ -200,10 +189,6 @@
 
       .text-block.two-lines {
         font-size: 22px;
-      }
-
-      .logo-velez {
-        height: 40px;
       }
     }
   </style>
@@ -228,7 +213,6 @@
         <span>en ser un Gran Club</span>
       </div>
     </div>
-    <img src="escudo.png" alt="Escudo de Vélez" class="logo-velez" />
   </header>
 
   <main id="mainContent">
@@ -248,33 +232,72 @@
       <div class="gallery-item">
         <h3>Campeón Libertadores 1994</h3>
         <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/320px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Vélez Campeón Libertadores 1994" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
         </a>
       </div>
+
+      <div class="gallery-item">
+        <h3>Bandera de Vélez</h3>
+        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+        </a>
+      </div>
+    </div>
+
+    <div class="custom-photo">
+      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
+    </div>
+
+    <div class="redes">
+      <a href="https://x.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
+      </a>
+      <a href="https://instagram.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
+      </a>
+      <a href="https://facebook.com/velezsarsfield" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
+      </a>
+      <a href="https://www.tiktok.com/@velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez">
+      </a>
     </div>
   </main>
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      if (menu.style.width === '250px') {
-        menu.style.width = '0';
-      } else {
-        menu.style.width = '250px';
-      }
+      const menu = document.getElementById("sideMenu");
+      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
     }
 
     function closeMenu() {
-      document.getElementById('sideMenu').style.width = '0';
+      document.getElementById("sideMenu").style.width = "0";
     }
 
-    window.addEventListener('click', function(event) {
-      const menu = document.getElementById('sideMenu');
-      const button = document.querySelector('.menu-button');
-      if (menu.style.width === '250px' && !menu.contains(event.target) && event.target !== button) {
-        menu.style.width = '0';
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        closeMenu();
       }
     });
+
+    const velezBlock = document.getElementById("title-velez");
+    const primeroBlock = document.getElementById("title-elprimero");
+    let showingVelez = true;
+
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        primeroBlock.classList.add("active");
+      } else {
+        primeroBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
+    }
+
+    setInterval(toggleTitle, 5000);
   </script>
 </body>
 </html>
