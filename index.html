@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vélez Fans</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -26,12 +24,11 @@
       font-weight: bold;
       display: flex;
       align-items: center;
-      height: 70px;
-      gap: 15px;
     }
 
     .menu-button {
       font-size: 28px;
+      margin-left: 0;
       background: none;
       border: none;
       color: white;
@@ -106,6 +103,12 @@
       margin: 10px 0 5px;
     }
 
+    @media (max-width: 600px) {
+      .gallery-item {
+        width: 90%;
+      }
+    }
+
     .custom-photo {
       text-align: center;
       margin: 60px auto;
@@ -118,78 +121,41 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
+    /* TÍTULO ANIMADO */
     .title-container {
-      position: relative;
-      height: 60px;
-      width: 300px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 48px;
+      background-color: #0047ab;
       color: white;
-    }
-
-    .text-block {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 60px;
-    }
-
-    .text-block.active {
-      opacity: 1;
-      transform: translateY(0);
-      position: relative;
-    }
-
-    .text-block.two-lines {
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 1.1;
-    }
-
-    .text-block.two-lines span {
-      display: block;
-    }
-
-    .redes {
       text-align: center;
-      margin-top: 40px;
+      padding: 60px 20px 40px;
     }
 
-    .redes a img {
-      width: 40px;
-      height: 40px;
-      margin: 0 10px;
-      transition: transform 0.2s ease;
+    .title-main {
+      font-size: 40px;
+      font-weight: bold;
+      transition: opacity 0.5s ease-in-out;
     }
 
-    .redes a img:hover {
-      transform: scale(0.9);
+    .subtitle {
+      font-size: 24px;
+      margin-top: 10px;
     }
 
-    @media (max-width: 600px) {
-      .gallery-item {
-        width: 90%;
-      }
+    /* REDES */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 60px 0;
+    }
 
-      .title-container {
-        width: 100%;
-        font-size: 32px;
-      }
+    .social-icons img {
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s;
+    }
 
-      .text-block.two-lines {
-        font-size: 22px;
-      }
+    .social-icons img:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
@@ -206,16 +172,15 @@
 
   <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
-    <div class="title-container">
-      <div class="text-block active" id="title-velez">Vélez</div>
-      <div class="text-block two-lines" id="title-elprimero">
-        <span>El Primero</span>
-        <span>en ser un Gran Club</span>
-      </div>
-    </div>
+    Vélez Sarsfield
   </header>
 
-  <main id="mainContent">
+  <div class="title-container">
+    <div id="mainTitle" class="title-main">Vélez</div>
+    <div id="subTitle" class="subtitle" style="display: none;">en ser un gran club</div>
+  </div>
+
+  <main>
     <h2>Bienvenidos a Vélez Fans</h2>
     <p>
       Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
@@ -248,15 +213,18 @@
       <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
     </div>
 
-    <div class="redes">
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@velez" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok" />
+      </a>
       <a href="https://x.com/velez" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023.svg" alt="X (Twitter)" />
       </a>
-      <a href="https://instagram.com/velez" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
+      <a href="https://www.instagram.com/velez" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
       </a>
-      <a href="https://facebook.com/velezsarsfield" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
+      <a href="https://www.facebook.com/velezsarsfield" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" />
       </a>
     </div>
   </main>
@@ -264,7 +232,11 @@
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
+      if (menu.style.width === "250px") {
+        closeMenu();
+      } else {
+        menu.style.width = "250px";
+      }
     }
 
     function closeMenu() {
@@ -274,27 +246,28 @@
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("sideMenu");
       const button = document.querySelector(".menu-button");
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
+      const clickedInsideMenu = menu.contains(event.target);
+      const clickedMenuButton = button.contains(event.target);
+      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
         closeMenu();
       }
     });
 
-    const velezBlock = document.getElementById("title-velez");
-    const primeroBlock = document.getElementById("title-elprimero");
+    // Animación del título
+    const mainTitle = document.getElementById("mainTitle");
+    const subTitle = document.getElementById("subTitle");
     let showingVelez = true;
 
-    function toggleTitle() {
+    setInterval(() => {
       if (showingVelez) {
-        velezBlock.classList.remove("active");
-        primeroBlock.classList.add("active");
+        mainTitle.textContent = "El primero";
+        subTitle.style.display = "block";
       } else {
-        primeroBlock.classList.remove("active");
-        velezBlock.classList.add("active");
+        mainTitle.textContent = "Vélez";
+        subTitle.style.display = "none";
       }
       showingVelez = !showingVelez;
-    }
-
-    setInterval(toggleTitle, 5000);
+    }, 5000);
   </script>
 </body>
 </html>
