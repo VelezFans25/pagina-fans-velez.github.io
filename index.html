@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -6,205 +7,215 @@
   <style>
     * {
       box-sizing: border-box;
-    }body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: white;
-  background-image:
-    repeating-linear-gradient(45deg, rgba(2, 96, 170, 0.1) 0, rgba(2, 96, 170, 0.1) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(-45deg, rgba(2, 96, 170, 0.1) 0, rgba(2, 96, 170, 0.1) 1px, transparent 1px, transparent 40px);
-}
+    }
 
-header {
-  background-color: #0260AA;
-  color: white;
-  padding: 10px 20px;
-  font-size: 28px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  gap: 15px;
-  position: relative;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
+    }
 
-.menu-button {
-  font-size: 28px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
+    header {
+      background-color: #0260AA;
+      color: white;
+      padding: 10px 20px;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      height: 70px;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.side-menu {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #0260AA;
-  overflow-x: hidden;
-  transition: width 0.3s ease;
-  padding-top: 60px;
-  z-index: 1000;
-}
+    .menu-button {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
 
-.side-menu a {
-  padding: 10px 30px;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  display: block;
-  transition: 0.2s;
-}
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #0260AA;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
 
-.side-menu a:hover {
-  background-color: #005a9c;
-}
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
 
-main {
-  padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+    .side-menu a:hover {
+      background-color: #0260AA;
+    }
 
-h2 {
-  color: #0260AA;
-}
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-p {
-  line-height: 1.6;
-  text-align: justify;
-  font-size: 18px;
-}
+    h2 {
+      color: #0260AA;
+    }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 18px;
+    }
 
-.gallery-item {
-  text-align: center;
-  max-width: 300px;
-}
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+    .gallery-item {
+      text-align: center;
+      max-width: 300px;
+    }
 
-.gallery-item h3 {
-  font-size: 18px;
-  color: #0260AA;
-  margin: 10px 0 5px;
-}
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 
-.custom-photo {
-  text-align: center;
-  margin: 60px auto;
-}
+    .gallery-item h3 {
+      font-size: 18px;
+      color: #0260AA;
+      margin: 10px 0 5px;
+    }
 
-.custom-photo img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+    .custom-photo {
+      text-align: center;
+      margin: 60px auto;
+    }
 
-.title-container {
-  position: relative;
-  height: 60px;
-  width: 300px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 48px;
-  color: white;
-}
+    .custom-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
 
-.text-block {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 60px;
-}
+    .title-container {
+      position: relative;
+      height: 60px;
+      width: 300px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 48px;
+      color: white;
+    }
 
-.text-block.active {
-  opacity: 1;
-  transform: translateY(0);
-  position: relative;
-}
+    .text-block {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 60px;
+    }
 
-.text-block.two-lines {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.1;
-}
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
 
-.text-block.two-lines span {
-  display: block;
-}
+    .text-block.two-lines {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.1;
+    }
 
-.redes {
-  text-align: center;
-  margin-top: 40px;
-}
+    .text-block.two-lines span {
+      display: block;
+    }
 
-.redes a img {
-  width: 40px;
-  height: 40px;
-  margin: 0 10px;
-  transition: transform 0.2s ease;
-}
+    .redes {
+      text-align: center;
+      margin-top: 40px;
+    }
 
-.redes a img:hover {
-  transform: scale(0.9);
-}
+    .redes a img {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      transition: transform 0.2s ease;
+    }
 
-.escudo-velez {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  width: 50px;
-  height: auto;
-  transition: transform 0.2s ease;
-}
+    .redes a img:hover {
+      transform: scale(0.9);
+    }
 
-.escudo-velez:hover,
-.escudo-velez:active {
-  transform: scale(1.15);
-}
+    /* Escudo de Vélez */
+    .escudo-velez {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      height: 54px;
+      width: auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      z-index: 10;
+    }
 
-@media (max-width: 600px) {
-  .gallery-item {
-    width: 90%;
-  }
+    .escudo-velez:hover,
+    .escudo-velez:active {
+      transform: scale(1.1);
+    }
 
-  .title-container {
-    width: 100%;
-    font-size: 32px;
-  }
+    @media (max-width: 600px) {
+      .gallery-item {
+        width: 90%;
+      }
 
-  .text-block.two-lines {
-    font-size: 22px;
-  }
-}
+      .title-container {
+        width: 100%;
+        font-size: 32px;
+      }
 
+      .text-block.two-lines {
+        font-size: 22px;
+      }
+
+      .escudo-velez {
+        height: 40px;
+        top: 6px;
+        right: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -216,7 +227,9 @@ p {
     <a href="plantel.html" onclick="closeMenu()">Plantel</a>
     <a href="calendario.html" onclick="closeMenu()">Calendario</a>
     <a href="foro.html" onclick="closeMenu()">Foro</a>
-  </div>  <header>
+  </div>
+
+  <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
     <div class="title-container">
       <div class="text-block active" id="title-velez">Vélez</div>
@@ -226,53 +239,58 @@ p {
       </div>
     </div>
     <img src="escudo.velez.png" alt="Escudo de Vélez" class="escudo-velez" />
-  </header>  <main id="mainContent">
+  </header>
+
+  <main id="mainContent">
     <h2>Bienvenidos a Vélez Fans</h2>
     <p>
       Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
-    </p><div class="gallery">
-  <div class="gallery-item">
-    <h3>Estadio José Amalfitani</h3>
-    <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">
-      <img src="estadio.jpg" alt="Estadio José Amalfitani" />
-    </a>
-  </div>
+    </p>
 
-  <div class="gallery-item">
-    <h3>Campeón Libertadores 1994</h3>
-    <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
-    </a>
-  </div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <h3>Estadio José Amalfitani</h3>
+        <a href="https://www.google.com/search?q=Estadio+Jos%C3%A9+Amalfitani&tbm=isch" target="_blank">
+          <img src="estadio.jpg" alt="Estadio José Amalfitani" />
+        </a>
+      </div>
 
-  <div class="gallery-item">
-    <h3>Bandera de Vélez</h3>
-    <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
-    </a>
-  </div>
-</div>
+      <div class="gallery-item">
+        <h3>Campeón Libertadores 1994</h3>
+        <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
+        </a>
+      </div>
 
-<div class="custom-photo">
-  <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
-</div>
+      <div class="gallery-item">
+        <h3>Bandera de Vélez</h3>
+        <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_CAVS.svg/800px-Flag_of_CAVS.svg.png" alt="Bandera de Vélez" />
+        </a>
+      </div>
+    </div>
 
-<div class="redes">
-  <a href="https://x.com/velez" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
-  </a>
-  <a href="https://instagram.com/velez" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
-  </a>
-  <a href="https://facebook.com/velezsarsfield" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
-  </a>
-  <a href="https://www.tiktok.com/@velez" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez">
-  </a>
-</div>
+    <div class="custom-photo">
+      <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
+    </div>
 
-  </main>  <script>
+    <div class="redes">
+      <a href="https://x.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
+      </a>
+      <a href="https://instagram.com/velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
+      </a>
+      <a href="https://facebook.com/velezsarsfield" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
+      </a>
+      <a href="https://www.tiktok.com/@velez" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez">
+      </a>
+    </div>
+  </main>
+
+  <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
       menu.style.width = menu.style.width === "250px" ? "0" : "250px";
@@ -306,5 +324,6 @@ p {
     }
 
     setInterval(toggleTitle, 5000);
-  </script></body>
+  </script>
+</body>
 </html>
