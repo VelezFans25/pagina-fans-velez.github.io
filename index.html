@@ -29,7 +29,6 @@
       height: 70px;
       gap: 15px;
       position: relative;
-      overflow: hidden;
     }
 
     .menu-button {
@@ -63,7 +62,7 @@
     }
 
     .side-menu a:hover {
-      background-color: #0260AA;
+      background-color: #0047ab;
     }
 
     main {
@@ -179,13 +178,11 @@
       transform: scale(0.9);
     }
 
-    /* Escudo de Vélez */
     .escudo-velez {
       position: absolute;
       top: 8px;
-      right: 10px;
+      right: 30px;
       height: 54px;
-      width: auto;
       cursor: pointer;
       transition: transform 0.2s ease;
       z-index: 10;
@@ -209,12 +206,6 @@
       .text-block.two-lines {
         font-size: 22px;
       }
-
-      .escudo-velez {
-        height: 40px;
-        top: 6px;
-        right: 8px;
-      }
     }
   </style>
 </head>
@@ -231,6 +222,7 @@
 
   <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <img src="escudo.velez.png" alt="Escudo de Vélez" class="escudo-velez">
     <div class="title-container">
       <div class="text-block active" id="title-velez">Vélez</div>
       <div class="text-block two-lines" id="title-elprimero">
@@ -238,7 +230,6 @@
         <span>en ser un Gran Club</span>
       </div>
     </div>
-    <img src="escudo.velez.png" alt="Escudo de Vélez" class="escudo-velez" />
   </header>
 
   <main id="mainContent">
