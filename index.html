@@ -26,7 +26,6 @@
       font-weight: bold;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       height: 70px;
       gap: 15px;
       position: relative;
@@ -38,6 +37,19 @@
       border: none;
       color: white;
       cursor: pointer;
+    }
+
+    .logo-velez {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      height: 50px;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-velez:hover,
+    .logo-velez:active {
+      transform: scale(1.15);
     }
 
     .side-menu {
@@ -63,7 +75,7 @@
     }
 
     .side-menu a:hover {
-      background-color: #0260AA;
+      background-color: #0047ab;
     }
 
     main {
@@ -73,7 +85,7 @@
     }
 
     h2 {
-      color: #0260AA;
+      color: #0047ab;
     }
 
     p {
@@ -104,7 +116,7 @@
 
     .gallery-item h3 {
       font-size: 18px;
-      color: #0260AA;
+      color: #0047ab;
       margin: 10px 0 5px;
     }
 
@@ -179,13 +191,6 @@
       transform: scale(0.9);
     }
 
-    .logo-velez {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      height: 50px;
-    }
-
     @media (max-width: 600px) {
       .gallery-item {
         width: 90%;
@@ -202,6 +207,8 @@
 
       .logo-velez {
         height: 40px;
+        top: 15px;
+        right: 10px;
       }
     }
   </style>
@@ -226,7 +233,7 @@
         <span>en ser un Gran Club</span>
       </div>
     </div>
-    <img src="escudo.velez.png" alt="Escudo de Vélez" class="logo-velez">
+    <img src="escudo.velez.png" alt="Escudo de Vélez" class="logo-velez" />
   </header>
 
   <main id="mainContent">
