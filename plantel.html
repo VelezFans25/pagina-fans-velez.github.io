@@ -1,156 +1,292 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Plantel - Vélez Sarsfield</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f0f4fc;
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(0, 71, 171, 0.05),
-        rgba(0, 71, 171, 0.05) 2px,
-        transparent 2px,
-        transparent 20px
-      ),
-      repeating-linear-gradient(
-        -45deg,
-        rgba(0, 71, 171, 0.05),
-        rgba(0, 71, 171, 0.05) 2px,
-        transparent 2px,
-        transparent 20px
-      );
-    }header {
-  background-color: #0047ab;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-}
+      background-color: white;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(2, 96, 170, 0.05) 0, rgba(2, 96, 170, 0.05) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(2, 96, 170, 0.05) 0, rgba(2, 96, 170, 0.05) 1px, transparent 1px, transparent 40px);
+    }
+    header {
+      background-color: #0260AA;
+      color: white;
+      padding: 10px 20px;
+      font-weight: 900;
+      font-size: 48px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 70px;
+      gap: 15px;
+      user-select: none;
+    }
+    .menu-button {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #0260AA;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: background-color 0.2s;
+    }
+    .side-menu a:hover {
+      background-color: #004c8c;
+    }
+    .escudo-velez {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 42px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 15;
+    }
+    .escudo-velez:hover,
+    .escudo-velez:active {
+      transform: translateY(-50%) scale(1.1);
+    }
+    .title-container {
+      position: relative;
+      height: 60px;
+      width: 160px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      user-select: none;
+    }
+    .text-block {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 60px;
+      text-align: left;
+      font-weight: 900;
+      font-size: 48px;
+      color: white;
+    }
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
+    main {
+      max-width: 600px;
+      margin: 30px auto 80px;
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+    h2 {
+      color: #0260AA;
+      font-weight: 900;
+      border-bottom: 3px solid #0260AA;
+      padding-bottom: 5px;
+      margin-top: 20px;
+      user-select: none;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 8px;
+    }
+    li {
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+    }
 
-nav {
-  background-color: #003b8b;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
+    /* Footer info estilo */
+    #footerInfo {
+      margin-top: 40px;
+      color: #0260AA;
+      font-weight: 900;
+      font-size: 26px;
+      line-height: 1.2;
+      user-select: none;
+    }
+    #footerInfo h3 {
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    #footerInfo ul li {
+      font-weight: 700;
+      font-size: 18px;
+      color: #024e7a;
+      margin-bottom: 4px;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-h2, h3 {
-  color: #0047ab;
-  border-bottom: 2px solid #0047ab;
-  padding-bottom: 5px;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-li {
-  margin-bottom: 6px;
-}
-
-.section {
-  margin-top: 30px;
-}
-
+    /* Responsive */
+    @media (max-width: 640px) {
+      main {
+        margin: 20px 15px 60px;
+        padding: 15px 20px;
+      }
+      .title-container {
+        width: 130px;
+        font-size: 36px;
+        height: 50px;
+      }
+      .text-block {
+        font-size: 36px;
+        height: 50px;
+      }
+      header {
+        height: 60px;
+        padding: 10px 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>Plantel de Vélez Sarsfield</header>  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-    <a href="plantel.html">Plantel</a>
-  </nav>  <main>
-    <section>
+  <div id="sideMenu" class="side-menu" role="navigation" aria-label="Menú lateral">
+    <a href="index.html" onclick="closeMenu()">Inicio</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="fixture.html" onclick="closeMenu()">Fixture</a>
+    <a href="foro.html" onclick="closeMenu()">Foro</a>
+  </div>
+
+  <header>
+    <button class="menu-button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+    <div class="title-container" aria-live="polite" aria-atomic="true" aria-relevant="text" aria-label="Título animado Vélez Plantel">
+      <div id="title-velez" class="text-block active">Vélez</div>
+      <div id="title-plantel" class="text-block">Plantel</div>
+    </div>
+    <img src="escudo.velez.png" alt="Escudo Vélez Sarsfield" class="escudo-velez" />
+  </header>
+
+  <main>
+    <section id="cuerpo-tecnico">
       <h2>🧠 Cuerpo Técnico</h2>
       <ul>
-        <li><strong>Director Técnico:</strong> Guillermo Barros Schelotto</li>
-        <li><strong>Ayudante de Campo:</strong> Pablo Cavallero</li>
-        <li><strong>Preparador Físico:</strong> Alejandro Kohan</li>
+        <li><strong>Director Técnico:</strong> Alexander Medina</li>
+        <li><strong>Ayudante de Campo:</strong> Hernán Buján</li>
+        <li><strong>Preparador Físico:</strong> Gustavo Linares</li>
       </ul>
-    </section><section class="section">
-  <h2>🧤 Últimos Titulares</h2>
-  <h3>Arquero</h3>
-  <ul><li>1 - Tomás Marchiori</li></ul>
+    </section>
 
-  <h3>Defensores</h3>
-  <ul>
-    <li>2 - Agustín Lagos</li>
-    <li>3 - Emanuel Mammana</li>
-    <li>4 - Valentín Gómez</li>
-    <li>5 - Elías Gómez</li>
-  </ul>
+    <section id="plantel-principal">
+      <h2>⚽ Plantel Principal 2025</h2>
+      <p>Datos actualizados al 2025</p>
+    </section>
 
-  <h3>Mediocampistas</h3>
-  <ul>
-    <li>6 - Christian Ordóñez</li>
-    <li>7 - Claudio Baeza</li>
-    <li>8 - Agustín Bouzat</li>
-  </ul>
+    <section id="footerInfo">
+      <h2>👕 Plantel Completo</h2>
 
-  <h3>Delanteros</h3>
-  <ul>
-    <li>9 - Maher Carrizo</li>
-    <li>10 - Braian Romero</li>
-    <li>11 - Imanol Machuca</li>
-  </ul>
-</section>
+      <h3>Arqueros</h3>
+      <ul>
+        <li>1 - Tomás Marchiori</li>
+        <li>12 - Damián Fernández</li>
+        <li>30 - Franco Franco</li>
+      </ul>
 
-<section class="section">
-  <h2>🔁 Suplentes</h2>
-  <ul>
-    <li>12 - Damián Fernández</li>
-    <li>13 - Kevin Vázquez</li>
-    <li>14 - Michael Santos</li>
-    <li>15 - Álvaro Montoro</li>
-    <li>16 - Tomás Cavanagh</li>
-    <li>17 - Maximiliano Porcel</li>
-    <li>18 - Tomás Galván</li>
-    <li>19 - Leonel Roldán</li>
-    <li>20 - Benjamín Bosch</li>
-  </ul>
-</section>
+      <h3>Defensores</h3>
+      <ul>
+        <li>2 - Agustín Lagos</li>
+        <li>3 - Emanuel Mammana</li>
+        <li>4 - Valentín Gómez</li>
+        <li>5 - Elías Gómez</li>
+        <li>6 - Claudio Brizuela</li>
+        <li>22 - Mauro Pittón</li>
+      </ul>
 
-<section class="section">
-  <h2>📊 Estadísticas del Partido</h2>
-  <ul>
-    <li><strong>Rival:</strong> Peñarol</li>
-    <li><strong>Fecha:</strong> 28 de mayo de 2025</li>
-    <li><strong>Resultado:</strong> Peñarol 0 - 0 Vélez Sarsfield</li>
-    <li><strong>Tarjetas Amarillas:</strong> Peñarol 1 - Vélez 2</li>
-    <li><strong>Tarjetas Rojas:</strong> Ninguna</li>
-  </ul>
-</section>
+      <h3>Mediocampistas</h3>
+      <ul>
+        <li>7 - Claudio Baeza</li>
+        <li>8 - Agustín Bouzat</li>
+        <li>10 - Braian Romero</li>
+        <li>14 - Álvaro Montoro</li>
+        <li>16 - Tomás Cavanagh</li>
+        <li>18 - Tomás Galván</li>
+      </ul>
 
+      <h3>Delanteros</h3>
+      <ul>
+        <li>9 - Maher Carrizo</li>
+        <li>11 - Imanol Machuca</li>
+        <li>19 - Leonel Roldán</li>
+        <li>20 - Benjamín Bosch</li>
+      </ul>
+    </section>
   </main>
+
+  <script>
+    // Menú hamburguesa
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
+    }
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    // Animación título Vélez <-> Plantel
+    const velezBlock = document.getElementById("title-velez");
+    const plantelBlock = document.getElementById("title-plantel");
+    let showingVelez = true;
+
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        plantelBlock.classList.add("active");
+      } else {
+        plantelBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
+    }
+    setInterval(toggleTitle, 5000);
+  </script>
 </body>
-                        </html>
+</html>
