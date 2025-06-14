@@ -14,8 +14,8 @@
       font-family: Arial, sans-serif;
       background-color: white;
       background-image:
-        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
-        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
+        repeating-linear-gradient(45deg, rgba(0, 98, 179, 0.1) 0, rgba(0, 98, 179, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 98, 179, 0.1) 0, rgba(0, 98, 179, 0.1) 1px, transparent 1px, transparent 40px);
     }
 
     header {
@@ -37,6 +37,7 @@
       border: none;
       color: white;
       cursor: pointer;
+      z-index: 1100;
     }
 
     .side-menu {
@@ -62,7 +63,7 @@
     }
 
     .side-menu a:hover {
-      background-color: #0047ab;
+      background-color: #004c8c;
     }
 
     main {
@@ -72,7 +73,7 @@
     }
 
     h2 {
-      color: #0047ab;
+      color: #0260AA;
     }
 
     p {
@@ -103,7 +104,7 @@
 
     .gallery-item h3 {
       font-size: 18px;
-      color: #0047ab;
+      color: #0260AA;
       margin: 10px 0 5px;
     }
 
@@ -130,6 +131,7 @@
       font-weight: 900;
       font-size: 48px;
       color: white;
+      z-index: 10;
     }
 
     .text-block {
@@ -178,18 +180,20 @@
       transform: scale(0.9);
     }
 
-    #escudo-velez {
+    .escudo-velez {
       position: absolute;
-      top: -12px;
-      right: 12px;
-      width: 48px;
+      top: 8px; /* bajado para que se vea todo */
+      right: 20px;
+      width: 50px; /* tamaño más pequeño */
       height: auto;
+      cursor: pointer;
       transition: transform 0.3s ease;
+      z-index: 15;
     }
 
-    #escudo-velez:hover,
-    #escudo-velez:active {
-      transform: scale(1.2);
+    .escudo-velez:hover,
+    .escudo-velez:active {
+      transform: scale(1.1);
     }
 
     @media (max-width: 600px) {
@@ -228,7 +232,7 @@
         <span>en ser un Gran Club</span>
       </div>
     </div>
-    <img src="escudo.velez.png" alt="Escudo de Vélez" id="escudo-velez" />
+    <img src="escudo.velez.png" alt="Escudo Vélez" class="escudo-velez" />
   </header>
 
   <main id="mainContent">
