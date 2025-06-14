@@ -2,37 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calendario de Partidos - Vélez Sarsfield</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vélez Fans - Fixture</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: white;
       background-image:
-        repeating-linear-gradient(45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px),
-        repeating-linear-gradient(-45deg, rgba(0, 71, 171, 0.1) 0, rgba(0, 71, 171, 0.1) 1px, transparent 1px, transparent 40px);
+        repeating-linear-gradient(45deg, rgba(0, 98, 179, 0.1) 0, rgba(0, 98, 179, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(0, 98, 179, 0.1) 0, rgba(0, 98, 179, 0.1) 1px, transparent 1px, transparent 40px);
     }
 
     header {
-      background-color: #0047ab;
+      background-color: #0260AA;
       color: white;
       padding: 10px 20px;
       font-size: 28px;
       font-weight: bold;
       display: flex;
       align-items: center;
+      height: 70px;
+      gap: 15px;
+      position: relative;
     }
 
     .menu-button {
       font-size: 28px;
-      margin-left: 0;
-      background: white;
+      background: none;
       border: none;
-      color: #0047ab;
+      color: white;
       cursor: pointer;
-      border-radius: 5px;
-      padding: 5px 10px;
+      z-index: 1100;
     }
 
     .side-menu {
@@ -41,7 +46,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #003b8b;
+      background-color: #0260AA;
       overflow-x: hidden;
       transition: width 0.3s ease;
       padding-top: 60px;
@@ -58,124 +63,181 @@
     }
 
     .side-menu a:hover {
-      background-color: #0047ab;
+      background-color: #004c8c;
+    }
+
+    .escudo-velez {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 42px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 15;
+    }
+
+    .escudo-velez:hover,
+    .escudo-velez:active {
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .title-container {
+      position: relative;
+      height: 60px;
+      width: 160px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 48px;
+      color: white;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .text-block {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 60px;
+      text-align: left;
+    }
+
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .text-block.two-lines {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.1;
     }
 
     main {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      max-width: 600px;
+      margin: 30px auto 80px;
+      font-family: Arial, sans-serif;
     }
 
-    h2 {
-      color: #0047ab;
+    /* Cuadro selector */
+    #tabSelector {
+      display: flex;
+      border: 2px solid #0260AA;
+      border-radius: 8px;
+      overflow: hidden;
+      user-select: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    #tabSelector > div {
+      flex: 1;
+      padding: 10px 0;
       text-align: center;
-      margin-bottom: 20px;
+      color: #0260AA;
+      background-color: white;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 50px;
-    }
-
-    th, td {
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    th {
-      background-color: #0047ab;
+    #tabSelector > div.active {
+      background-color: #0260AA;
       color: white;
-      font-weight: 600;
     }
 
-    tr:nth-child(even) {
-      background-color: #f2f9ff;
+    #tabContent {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+      min-height: 150px;
     }
 
-    .local {
-      color: #0047ab;
-      font-weight: bold;
+    /* Texto debajo */
+    #footerText {
+      margin-top: 40px;
+      color: #0260AA;
+      font-weight: 900;
+      font-size: 36px;
+      font-family: 'Arial Black', Arial, sans-serif;
+      line-height: 1.1;
+      text-align: center;
+      user-select: none;
     }
 
-    .visitante {
-      color: #d32f2f;
-      font-weight: bold;
+    #footerText div:last-child {
+      font-weight: 700;
+      font-size: 22px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 20px 15px 60px;
+      }
+
+      .title-container {
+        font-size: 36px;
+        width: 120px;
+      }
+
+      #tabSelector {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <div id="sideMenu" class="side-menu">
-    <a href="index.html" onclick="closeMenu()">Inicio</a>
     <a href="historia.html" onclick="closeMenu()">Historia</a>
     <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
     <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
     <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
     <a href="plantel.html" onclick="closeMenu()">Plantel</a>
-    <a href="calendario.html" onclick="closeMenu()">Calendario</a>
+    <a href="fixture.html" onclick="closeMenu()">Fixture</a>
+    <a href="foro.html" onclick="closeMenu()">Foro</a>
   </div>
 
   <header>
     <button class="menu-button" onclick="toggleMenu()">☰</button>
-    Vélez Sarsfield - Calendario de Partidos
+    <div class="title-container" aria-label="Título animado Vélez Fixture">
+      <div class="text-block active" id="title-velez">Vélez</div>
+      <div class="text-block" id="title-fixture">Fixture</div>
+    </div>
+    <img src="escudo.velez.png" alt="Escudo Vélez" class="escudo-velez" />
   </header>
 
   <main>
-    <h2>Próximos Partidos de Vélez Sarsfield</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Torneo</th>
-          <th>Rival</th>
-          <th>Local/Visitante</th>
-          <th>Hora</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>10/06/2025</td>
-          <td>Primera División - Clausura</td>
-          <td>Racing club de avellaneda</td>
-          <td class="local">Local</td>
-          <td>20:00</td>
-        </tr>
-        <tr>
-          <td>15/06/2025</td>
-          <td>Primera División - Clausura</td>
-          <td>Independiente</td>
-          <td class="visitante">Visitante</td>
-          <td>18:30</td>
-        </tr>
-        <tr>
-          <td>22/06/2025</td>
-          <td>Primera División - Clausura</td>
-          <td>San Lorenzo</td>
-          <td class="local">Local</td>
-          <td>19:15</td>
-        </tr>
-        <tr>
-          <td>29/06/2025</td>
-          <td>Primera División - Clausura</td>
-          <td>Club Atlético River Plate</td>
-          <td class="visitante">Visitante</td>
-          <td>21:00</td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="tabSelector" role="tablist" aria-label="Selector de Fixture o Calendario completo">
+      <div id="fixtureTab" class="active" role="tab" tabindex="0" aria-selected="true" aria-controls="tabContent" onclick="switchTab('fixture')">Fixture</div>
+      <div id="calendarTab" role="tab" tabindex="0" aria-selected="false" aria-controls="tabContent" onclick="switchTab('calendar')">Calendario completo</div>
+    </div>
+
+    <div id="tabContent" role="tabpanel" tabindex="0" aria-live="polite" aria-atomic="true" style="margin-top:20px; min-height: 150px;">
+      <p>Aquí va la información del Fixture...</p>
+    </div>
+
+    <div id="footerText">
+      <div>El Primero</div>
+      <div>En ser un Gran Club</div>
+    </div>
   </main>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      if (menu.style.width === "250px") {
-        closeMenu();
-      } else {
-        menu.style.width = "250px";
-      }
+      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
     }
 
     function closeMenu() {
@@ -185,14 +247,52 @@
     document.addEventListener("click", function(event) {
       const menu = document.getElementById("sideMenu");
       const button = document.querySelector(".menu-button");
-
-      const clickedInsideMenu = menu.contains(event.target);
-      const clickedMenuButton = button.contains(event.target);
-
-      if (!clickedInsideMenu && !clickedMenuButton && menu.style.width === "250px") {
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
         closeMenu();
       }
     });
+
+    // Animación título Vélez <-> Fixture
+    const velezBlock = document.getElementById("title-velez");
+    const fixtureBlock = document.getElementById("title-fixture");
+    let showingVelez = true;
+
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        fixtureBlock.classList.add("active");
+      } else {
+        fixtureBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
+    }
+    setInterval(toggleTitle, 5000);
+
+    // Selector Fixture / Calendario completo
+    function switchTab(tab) {
+      const fixtureTab = document.getElementById('fixtureTab');
+      const calendarTab = document.getElementById('calendarTab');
+      const tabContent = document.getElementById('tabContent');
+
+      if (tab === 'fixture') {
+        fixtureTab.classList.add('active');
+        fixtureTab.setAttribute('aria-selected', 'true');
+        calendarTab.classList.remove('active');
+        calendarTab.setAttribute('aria-selected', 'false');
+        tabContent.innerHTML = '<p>Aquí va la información del Fixture...</p>';
+      } else if (tab === 'calendar') {
+        calendarTab.classList.add('active');
+        calendarTab.setAttribute('aria-selected', 'true');
+        fixtureTab.classList.remove('active');
+        fixtureTab.setAttribute('aria-selected', 'false');
+        tabContent.innerHTML = '<p>Aquí va la información del Calendario completo...</p>';
+      }
+    }
+
+    window.onload = () => {
+      switchTab('fixture');
+    };
   </script>
 </body>
 </html>
