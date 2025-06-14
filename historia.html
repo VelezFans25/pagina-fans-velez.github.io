@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historia - Vélez Fans</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vélez > Historia</title>
   <style>
     * {
       box-sizing: border-box;
@@ -11,108 +11,237 @@
 
     body {
       margin: 0;
-      background-color: white;
       font-family: Arial, sans-serif;
+      background-color: white;
     }
 
     header {
-      background-color: #0047ab;
+      background-color: #0260AA;
       color: white;
       padding: 10px 20px;
-      text-align: center;
-      font-size: 24px;
-    }
-
-    nav {
-      background-color: #003b8b;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
+      font-size: 28px;
       font-weight: bold;
-      font-size: 16px;
+      display: flex;
+      align-items: center;
+      height: 70px;
+      gap: 15px;
+      position: relative;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .menu-button {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #0260AA;
+      overflow-x: hidden;
+      transition: width 0.3s ease;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #004c8c;
+    }
+
+    .title-container {
+      position: relative;
+      height: 60px;
+      width: 300px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 48px;
+      color: white;
+      z-index: 10;
+    }
+
+    .text-block {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 60px;
+    }
+
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .text-block.two-lines {
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .text-block.two-lines span {
+      display: block;
+    }
+
+    .escudo-velez {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 42px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 15;
+    }
+
+    .escudo-velez:hover,
+    .escudo-velez:active {
+      transform: translateY(-50%) scale(1.1);
     }
 
     main {
       padding: 20px;
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
     }
 
     h2 {
-      color: #0047ab;
+      color: #0260AA;
     }
 
     p {
       line-height: 1.6;
       text-align: justify;
+      font-size: 18px;
     }
 
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
+    .final-frase {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0260AA;
+    }
+
+    @media (max-width: 600px) {
+      .title-container {
+        width: 100%;
+        font-size: 32px;
+      }
+
+      .text-block.two-lines {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="sideMenu" class="side-menu">
+    <a href="historia.html" onclick="closeMenu()">Historia</a>
+    <a href="libertadores.html" onclick="closeMenu()">Libertadores</a>
+    <a href="idolos.html" onclick="closeMenu()">Ídolos</a>
+    <a href="torneos.html" onclick="closeMenu()">Torneos Locales</a>
+    <a href="plantel.html" onclick="closeMenu()">Plantel</a>
+    <a href="fixture.html" onclick="closeMenu()">Fixture</a>
+    <a href="foro.html" onclick="closeMenu()">Foro</a>
+  </div>
+
   <header>
-    Vélez Sarsfield
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <div class="title-container">
+      <div class="text-block active" id="title-velez">Vélez</div>
+      <div class="text-block two-lines" id="title-historia">
+        <span>&gt; Historia</span>
+      </div>
+    </div>
+    <img src="escudo.velez.png" alt="Escudo Vélez" class="escudo-velez" />
   </header>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="libertadores.html">Libertadores</a>
-    <a href="historia.html">Historia</a>
-    <a href="torneos.html">Torneos Locales</a>
-    <a href="idolos.html">Ídolos</a>
-  </nav>
-
   <main>
-    <h2>Historia del Club Atlético Vélez Sarsfield</h2>
+    <h2>Historia de Vélez Sarsfield</h2>
     <p>
-      El Club Atlético Vélez Sarsfield fue fundado el 1 de enero de 1910 en el barrio de Floresta, Buenos Aires, por un grupo de jóvenes entusiastas del deporte. Inicialmente, el club se llamó "Club Atlético Argentinos de Vélez Sarsfield", en honor a la estación de tren cercana. Con el tiempo, se consolidó como una de las instituciones deportivas más importantes de Argentina, especialmente en el fútbol.
+      Fundado el 1 de enero de 1910 en el barrio de Vélez Sarsfield, Buenos Aires, el Club Atlético Vélez Sarsfield es uno de los clubes más importantes y tradicionales del fútbol argentino. A lo largo de su historia, el club ha sabido destacarse tanto por su buen juego como por su compromiso institucional.
+    </p>
+    <p>
+      En sus primeros años, Vélez tuvo que luchar desde el amateurismo hasta consolidarse en el profesionalismo. Su primer gran hito fue en 1968, cuando obtuvo el campeonato de Primera División con una delantera inolvidable encabezada por Carlos Bianchi. Desde entonces, el club creció enormemente en lo deportivo, lo social y lo institucional.
+    </p>
+    <p>
+      En la década del 90, bajo la presidencia de Raúl Gámez y la dirección técnica de Carlos Bianchi, Vélez vivió su época dorada. Ganó la Copa Libertadores de América en 1994, derrotando a São Paulo en el Morumbí, y luego la Copa Intercontinental frente al Milan de Italia. Ese equipo será recordado por su garra, organización y compromiso colectivo.
+    </p>
+    <p>
+      Más allá de los títulos, Vélez es una institución modelo. Cuenta con una de las mejores infraestructuras del país, una cantera que constantemente nutre al primer equipo y al fútbol argentino, y una masa societaria fiel y apasionada. El Estadio José Amalfitani es testigo de incontables noches históricas, y símbolo del crecimiento institucional del club.
+    </p>
+    <p>
+      Vélez también se destaca en otros deportes, en actividades culturales, y por su fuerte identidad barrial. Desde sus orígenes humildes hasta transformarse en un club de prestigio internacional, su historia está llena de orgullo y lucha.
+    </p>
+    <p>
+      La gente de Vélez se caracteriza por su fidelidad, por acompañar en las buenas y en las malas, y por su identidad fuerte, que no depende de modas ni resultados. Vélez es un sentimiento, una forma de vivir el fútbol y de llevar el club en el corazón.
     </p>
 
-    <h3>Primeros logros y crecimiento</h3>
-    <p>
-      A lo largo de su historia, Vélez ha demostrado un compromiso constante con el desarrollo deportivo y social. En 1968, el club obtuvo su primer campeonato de Primera División, marcando el inicio de una era de éxitos que se consolidarían en las décadas siguientes.
-    </p>
-
-    <h3>La era dorada de los años 90</h3>
-    <p>
-      Bajo la dirección técnica de Carlos Bianchi, Vélez vivió su época más gloriosa en la década de 1990. El punto culminante fue en 1994, cuando el club conquistó la Copa Libertadores y la Copa Intercontinental, venciendo al São Paulo FC y al AC Milan, respectivamente. Estos logros posicionaron a Vélez en la élite del fútbol mundial.
-    </p>
-
-    <h3>Infraestructura y formación</h3>
-    <p>
-      Vélez ha invertido significativamente en infraestructura, destacándose el estadio José Amalfitani, inaugurado en 1951, y la Villa Olímpica Raúl Héctor Gámez, un complejo deportivo de primer nivel que sirve como centro de entrenamiento para todas las divisiones del club.
-    </p>
-
-    <h3>Logros recientes</h3>
-    <p>
-      En diciembre de 2024, Vélez se coronó campeón de la Liga Profesional del fútbol argentino, sumando su decimoséptimo título oficial. Este triunfo refleja la continuidad de una gestión enfocada en la excelencia deportiva y el desarrollo institucional.
-    </p>
-
-    <h3>Títulos destacados</h3>
-    <ul>
-      <li>12 títulos nacionales de Primera División</li>
-      <li>1 Copa Nacional</li>
-      <li>5 títulos internacionales, incluyendo la Copa Libertadores y la Copa Intercontinental</li>
-    </ul>
-
-    <p>
-      Vélez Sarsfield continúa siendo un referente del fútbol argentino, con una rica historia y un futuro prometedor.
-    </p>
+    <div class="final-frase">
+      El primero en ser un Gran Club
+    </div>
   </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    const velezBlock = document.getElementById("title-velez");
+    const historiaBlock = document.getElementById("title-historia");
+    let showingVelez = true;
+
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        historiaBlock.classList.add("active");
+      } else {
+        historiaBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
+    }
+
+    setInterval(toggleTitle, 5000);
+  </script>
 </body>
 </html>
