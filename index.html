@@ -180,12 +180,13 @@
       transform: scale(0.9);
     }
 
-    /* Escudo dentro del rectángulo azul, un poco más pequeño y centrado verticalmente */
+    /* Escudo de Vélez centrado verticalmente dentro del header */
     .escudo-velez {
       position: absolute;
-      top: 12px;  /* Un poco más hacia abajo para no sobresalir */
+      top: 50%;
       right: 15px;
-      width: 45px;
+      transform: translateY(-50%);
+      width: 42px;
       height: auto;
       cursor: pointer;
       transition: transform 0.3s ease;
@@ -194,7 +195,7 @@
 
     .escudo-velez:hover,
     .escudo-velez:active {
-      transform: scale(1.1);
+      transform: translateY(-50%) scale(1.1);
     }
 
     @media (max-width: 600px) {
