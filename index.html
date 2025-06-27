@@ -222,13 +222,21 @@
 
     <div class="menu-footer">
       <div class="social-icons">
-        <a href="https://x.com/velez" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X"></a>
-        <a href="https://instagram.com/velez" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-        <a href="https://facebook.com/velezsarsfield" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-        <a href="https://www.tiktok.com/@velez" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok"></a>
+        <a href="https://x.com/velez" target="_blank" aria-label="X de Vélez">
+          <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez" />
+        </a>
+        <a href="https://instagram.com/velez" target="_blank" aria-label="Instagram de Vélez">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram de Vélez" />
+        </a>
+        <a href="https://facebook.com/velezsarsfield" target="_blank" aria-label="Facebook de Vélez">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez" />
+        </a>
+        <a href="https://www.tiktok.com/@velez" target="_blank" aria-label="TikTok de Vélez">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez" />
+        </a>
       </div>
       <div class="modo-oscuro-icono" onclick="toggleDarkMode()">
-        <img id="modoIcono" src="https://cdn-icons-png.flaticon.com/512/587/587174.png" alt="Modo oscuro" />
+        <img id="modoIcono" src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Modo oscuro" />
       </div>
     </div>
   </div>
@@ -274,17 +282,17 @@
       <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
     </div>
     <div class="redes">
-      <a href="https://x.com/velez" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez">
+      <a href="https://x.com/velez" target="_blank" aria-label="X de Vélez">
+        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez" />
       </a>
-      <a href="https://instagram.com/velez" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram de Vélez">
+      <a href="https://instagram.com/velez" target="_blank" aria-label="Instagram de Vélez">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram de Vélez" />
       </a>
-      <a href="https://facebook.com/velezsarsfield" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez">
+      <a href="https://facebook.com/velezsarsfield" target="_blank" aria-label="Facebook de Vélez">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook de Vélez" />
       </a>
-      <a href="https://www.tiktok.com/@velez" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez">
+      <a href="https://www.tiktok.com/@velez" target="_blank" aria-label="TikTok de Vélez">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez" />
       </a>
     </div>
   </main>
@@ -292,56 +300,4 @@
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      menu.style.width = menu.style.width === "250px" ? "0" : "250px";
-    }
-    function closeMenu() {
-      document.getElementById("sideMenu").style.width = "0";
-    }
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("sideMenu");
-      const button = document.querySelector(".menu-button");
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
-        closeMenu();
-      }
-    });
-    const velezBlock = document.getElementById("title-velez");
-    const primeroBlock = document.getElementById("title-elprimero");
-    let showingVelez = true;
-    function toggleTitle() {
-      if (showingVelez) {
-        velezBlock.classList.remove("active");
-        primeroBlock.classList.add("active");
-      } else {
-        primeroBlock.classList.remove("active");
-        velezBlock.classList.add("active");
-      }
-      showingVelez = !showingVelez;
-    }
-    setInterval(toggleTitle, 5000);
-
-    function toggleDarkMode() {
-      const body = document.body;
-      const icono = document.getElementById("modoIcono");
-      const activo = body.classList.toggle("dark-mode");
-      if (activo) {
-        localStorage.setItem("modoOscuro", "activado");
-        icono.src = "https://cdn-icons-png.flaticon.com/512/869/869868.png"; // icono sol contorno
-        icono.alt = "Modo claro";
-      } else {
-        localStorage.setItem("modoOscuro", "desactivado");
-        icono.src = "https://cdn-icons-png.flaticon.com/512/869/869869.png"; // icono luna contorno
-        icono.alt = "Modo oscuro";
-      }
-    }
-    window.addEventListener("DOMContentLoaded", () => {
-      const estado = localStorage.getItem("modoOscuro");
-      const icono = document.getElementById("modoIcono");
-      if (estado === "activado") {
-        document.body.classList.add("dark-mode");
-        icono.src = "https://cdn-icons-png.flaticon.com/512/869/869868.png";
-        icono.alt = "Modo claro";
-      }
-    });
-  </script>
-</body>
-</html>
+      menu.style.width = menu.style
