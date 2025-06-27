@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vélez Fans</title>
   <style>
     * { box-sizing: border-box; }
@@ -55,7 +55,7 @@
       overflow-x: hidden;
       transition: width 0.3s ease;
       padding-top: 60px;
-      z-index: 1000;
+      z-index: 9999; /* importante para que quede arriba */
     }
     .side-menu a {
       padding: 10px 30px;
@@ -142,13 +142,19 @@
       justify-content: center;
       height: 60px;
     }
-    .text-block.active { opacity: 1; transform: translateY(0); position: relative; }
+    .text-block.active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
+    }
     .text-block.two-lines {
       font-weight: 700;
       font-size: 28px;
       line-height: 1.1;
     }
-    .text-block.two-lines span { display: block; }
+    .text-block.two-lines span {
+      display: block;
+    }
     .redes {
       text-align: center;
       margin-top: 40px;
@@ -157,9 +163,12 @@
       width: 40px;
       height: 40px;
       margin: 0 10px;
+      border-radius: 50%;
       transition: transform 0.2s ease;
     }
-    .redes a img:hover { transform: scale(0.9); }
+    .redes a img:hover {
+      transform: scale(0.9);
+    }
     .escudo-velez {
       position: absolute;
       top: 50%;
@@ -190,6 +199,7 @@
       width: 24px;
       height: 24px;
       margin: 0 8px;
+      border-radius: 50%;
       filter: brightness(0) invert(1);
       transition: transform 0.2s;
     }
@@ -235,8 +245,8 @@
           <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok de Vélez" />
         </a>
       </div>
-      <div class="modo-oscuro-icono" onclick="toggleDarkMode()">
-        <img id="modoIcono" src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Modo oscuro" />
+      <div class="modo-oscuro-icono" onclick="toggleDarkMode()" title="Alternar modo oscuro">
+        <img id="modoIcono" src="https://cdn-icons-png.flaticon.com/512/869/869864.png" alt="Modo oscuro" />
       </div>
     </div>
   </div>
@@ -258,6 +268,7 @@
     <p>
       Esta es la página dedicada a todos los fanáticos del Fortín. Acá vas a encontrar información sobre su rica historia, logros en torneos locales e internacionales, y todo lo relacionado con el Club Atlético Vélez Sarsfield.
     </p>
+
     <div class="gallery">
       <div class="gallery-item">
         <h3>Estadio José Amalfitani</h3>
@@ -265,12 +276,14 @@
           <img src="estadio.jpg" alt="Estadio José Amalfitani" />
         </a>
       </div>
+
       <div class="gallery-item">
         <h3>Campeón Libertadores 1994</h3>
         <a href="https://www.google.com/search?q=V%C3%A9lez+Libertadores+1994&tbm=isch" target="_blank">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg/640px-V%C3%A9lez_Sarsfield_campe%C3%B3n_1994.jpg" alt="Campeón Libertadores 1994" />
         </a>
       </div>
+
       <div class="gallery-item">
         <h3>Bandera de Vélez</h3>
         <a href="https://www.google.com/search?q=bandera+de+velez+sarsfield&tbm=isch" target="_blank">
@@ -278,9 +291,11 @@
         </a>
       </div>
     </div>
+
     <div class="custom-photo">
       <img src="trofeos-velez.png" alt="Trofeos internacionales y nacionales de Vélez" />
     </div>
+
     <div class="redes">
       <a href="https://x.com/velez" target="_blank" aria-label="X de Vélez">
         <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="X de Vélez" />
@@ -300,4 +315,59 @@
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      menu.style.width = menu.style
+      const currentWidth = window.getComputedStyle(menu).width;
+      if (currentWidth === "0px" || currentWidth === "0") {
+        menu.style.width = "250px";
+      } else {
+        menu.style.width = "0";
+      }
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").style.width = "0";
+    }
+
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("sideMenu");
+      const button = document.querySelector(".menu-button");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    const velezBlock = document.getElementById("title-velez");
+    const primeroBlock = document.getElementById("title-elprimero");
+    let showingVelez = true;
+
+    function toggleTitle() {
+      if (showingVelez) {
+        velezBlock.classList.remove("active");
+        primeroBlock.classList.add("active");
+      } else {
+        primeroBlock.classList.remove("active");
+        velezBlock.classList.add("active");
+      }
+      showingVelez = !showingVelez;
+    }
+    setInterval(toggleTitle, 5000);
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const icon = document.getElementById("modoIcono");
+      if(document.body.classList.contains("dark-mode")) {
+        icon.src = "https://cdn-icons-png.flaticon.com/512/869/869869.png";
+        icon.alt = "Modo claro";
+      } else {
+        icon.src = "https://cdn-icons-png.flaticon.com/512/869/869864.png";
+        icon.alt = "Modo oscuro";
+      }
+    }
+
+    window.onload = () => {
+      const icon = document.getElementById("modoIcono");
+      icon.src = "https://cdn-icons-png.flaticon.com/512/869/869864.png";
+      icon.alt = "Modo oscuro";
+    };
+  </script>
+</body>
+</html>
